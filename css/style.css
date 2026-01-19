@@ -1,0 +1,6 @@
+body{margin:0;font-family:system-ui;background:#0b1020;color:#e7eaf3}
+.navbar{display:flex;gap:10px;padding:12px;background:#0f1730;border-bottom:1px solid #2b3357}
+.navbar button{background:#121a33;border:1px solid #2b3357;color:#e7eaf3;padding:10px 14px;border-radius:12px;cursor:pointer}
+.navbar button.active{background:#7aa2ff;color:#000;font-weight:bold}
+main{padding:20px}
+.muted{opacity:.7;font-size:12px}
