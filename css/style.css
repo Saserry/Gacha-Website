@@ -1,39 +1,140 @@
-body{margin:0;font-family:system-ui;background:#0b1020;color:#e7eaf3}
-.navbar{display:flex;gap:10px;padding:12px;background:#0f1730;border-bottom:1px solid #2b3357}
-.navbar button{background:#121a33;border:1px solid #2b3357;color:#e7eaf3;padding:10px 14px;border-radius:12px;cursor:pointer}
-.navbar button.active{background:#7aa2ff;color:#000;font-weight:bold}
-main{padding:20px}
-.muted{opacity:.7;font-size:12px}
+/* ===============================
+   BASE
+================================ */
+*{
+  box-sizing:border-box;
+}
 
+body{
+  margin:0;
+  font-family:system-ui;
+  background:#0b1020;
+  color:#e7eaf3;
+}
+
+/* ===============================
+   NAVBAR
+================================ */
+.navbar{
+  display:flex;
+  gap:10px;
+  padding:12px;
+  background:#0f1730;
+  border-bottom:1px solid #2b3357;
+}
+
+.navbar button{
+  background:#121a33;
+  border:1px solid #2b3357;
+  color:#e7eaf3;
+  padding:10px 14px;
+  border-radius:12px;
+  cursor:pointer;
+}
+
+.navbar button.active{
+  background:#7aa2ff;
+  color:#000;
+  font-weight:bold;
+}
+
+/* ===============================
+   LAYOUT
+================================ */
+main{
+  padding:20px;
+}
+
+.muted{
+  opacity:.7;
+  font-size:12px;
+}
+
+/* ===============================
+   CARD
+================================ */
+.card{
+  background:#0f1730;
+  border:1px solid #2b3357;
+  border-radius:16px;
+  padding:20px;
+}
+
+/* ===============================
+   CHARACTER HEADER
+================================ */
+.char-header{
+  display:flex;
+  gap:20px;
+  align-items:flex-start;
+}
+
+/* ===============================
+   IMAGE + ICONS BLOK
+================================ */
 .char-left{
   display:flex;
   flex-direction:column;
-  align-items:center;
+  align-items:center;   /* image gecentreerd */
 }
 
+/* CHARACTER IMAGE */
+.char-img{
+  width:160px;
+  height:160px;
+  object-fit:cover;
+  border-radius:12px;
+  background:#1b2450;
+}
+
+/* ===============================
+   RESONANCE ICONS (6 OP 1 RIJ)
+================================ */
 .chain-icons{
   display:flex;
-  gap:6px;
-  margin-top:8px;
+  gap:10px;
+  margin-top:10px;
+  flex-wrap:nowrap;          /* 🔥 NOOIT BREKEN */
+  justify-content:center;    /* mooi gecentreerd */
 }
 
+/* ICONS GROTER */
 .chain-icon{
-  width:28px;
-  height:28px;
-  cursor:pointer;
+  width:48px;                /* 🔥 groot maar clean */
+  height:48px;
   opacity:.25;
   transition:.2s;
 }
 
+/* ACTIVE */
 .chain-icon.active{
   opacity:1;
   filter:drop-shadow(0 0 6px rgba(255,200,120,.6));
 }
 
+/* CLICKABLE */
+.chain-icon.clickable{
+  cursor:pointer;
+}
+
+.chain-icon.clickable:hover{
+  transform:scale(1.15);
+  opacity:1;
+}
+
+/* DISABLED */
+.chain-icon.disabled{
+  cursor:not-allowed;
+  opacity:.15;
+}
+
+/* ===============================
+   WEAPON ICON
+================================ */
 .weapon-icon{
   width:32px;
   height:32px;
-  margin-top:6px;
+  margin-top:8px;
   cursor:pointer;
   opacity:.3;
 }
@@ -43,3 +144,41 @@ main{padding:20px}
   filter:drop-shadow(0 0 6px #ffcc66);
 }
 
+/* ===============================
+   CHARACTER INFO
+================================ */
+.char-info{
+  flex:1;
+}
+
+.pill{
+  padding:4px 10px;
+  border-radius:999px;
+  border:1px solid #2b3357;
+  font-size:.75rem;
+  margin-left:6px;
+}
+
+/* ===============================
+   SKILLS
+================================ */
+.skill-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:6px;
+}
+
+input{
+  background:#121a33!important;
+  color:#ffffff!important;
+  border:1px solid #2b3357!important;
+  border-radius:6px;
+  padding:4px 6px;
+}
+
+input:focus{
+  outline:none;
+  border-color:#7aa2ff!important;
+  box-shadow:0 0 6px rgba(122,162,255,.6);
+}
