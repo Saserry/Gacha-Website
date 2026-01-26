@@ -4,3 +4,42 @@ body{margin:0;font-family:system-ui;background:#0b1020;color:#e7eaf3}
 .navbar button.active{background:#7aa2ff;color:#000;font-weight:bold}
 main{padding:20px}
 .muted{opacity:.7;font-size:12px}
+
+.char-left{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.chain-icons{
+  display:flex;
+  gap:6px;
+  margin-top:8px;
+}
+
+.chain-icon{
+  width:28px;
+  height:28px;
+  cursor:pointer;
+  opacity:.25;
+  transition:.2s;
+}
+
+.chain-icon.active{
+  opacity:1;
+  filter:drop-shadow(0 0 6px rgba(255,200,120,.6));
+}
+
+.weapon-icon{
+  width:32px;
+  height:32px;
+  margin-top:6px;
+  cursor:pointer;
+  opacity:.3;
+}
+
+.weapon-icon.active{
+  opacity:1;
+  filter:drop-shadow(0 0 6px #ffcc66);
+}
+

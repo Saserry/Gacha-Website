@@ -1,191 +1,292 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Wuthering Waves – Gacha Tracker</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wuthering Waves Tracker</title>
 
-  <!-- Fonts & Icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;700&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+<style>
+body{
+  background:#0b1020;
+  color:#ffffff;
+  font-family:system-ui;
+}
+*{ color:#ffffff; }
 
-  <style>
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background:#0b1020;
-      color:#e7eaf3;
-    }
+.card{
+  background:#0f1730;
+  border:1px solid #2b3357;
+  border-radius:16px;
+}
 
-    .tracker-card {
-      background:#0f1730;
-      border:1px solid #2b3357;
-      border-radius:16px;
-      padding:16px;
-      margin-top:16px;
-    }
+input{
+  background:#121a33!important;
+  color:#ffffff!important;
+  border:1px solid #2b3357!important;
+}
 
-    input,select,textarea,button {
-      background:#121a33 !important;
-      color:#e7eaf3 !important;
-      border:1px solid #2b3357 !important;
-      border-radius:10px !important;
-    }
+.char-header{
+  display:flex;
+  gap:14px;
+}
 
-    .pill {
-      display:inline-block;
-      padding:4px 10px;
-      border-radius:999px;
-      border:1px solid #2b3357;
-      margin-left:6px;
-      font-size:.8rem;
-    }
+.char-left{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
 
-    .bar {
-      height:10px;
-      background:#1b2450;
-      border-radius:999px;
-      overflow:hidden;
-    }
-    .bar > div {
-      height:100%;
-      background:#7aa2ff;
-    }
-  </style>
+.char-img{
+  width:160px;
+  height:160px;
+  object-fit:cover;
+  border-radius:12px;
+  background:#1b2450;
+}
+
+.chain-icons{
+  display:flex;
+  gap:6px;
+  margin-top:8px;
+}
+
+.chain-icon{
+  width:28px;
+  height:28px;
+  background:#1b2450;
+  border-radius:6px;
+  opacity:.3;
+  transition:.2s;
+}
+
+.chain-icon.active{
+  opacity:1;
+  filter:drop-shadow(0 0 6px rgba(255,200,120,.6));
+}
+
+.chain-icon.clickable{
+  cursor:pointer;
+}
+
+.chain-icon.disabled{
+  cursor:not-allowed;
+  opacity:.15;
+}
+
+.weapon-icon{
+  width:32px;
+  height:32px;
+  margin-top:6px;
+  cursor:pointer;
+  opacity:.3;
+}
+
+.weapon-icon.active{
+  opacity:1;
+  filter:drop-shadow(0 0 6px #ffcc66);
+}
+
+.char-info{
+  flex:1;
+}
+
+.pill{
+  padding:4px 10px;
+  border-radius:999px;
+  border:1px solid #2b3357;
+  font-size:.75rem;
+}
+
+.skill-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:6px;
+}
+</style>
 </head>
 
-<body class="d-flex flex-column h-100">
+<body class="container py-4">
 
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
-  <div class="container px-5">
-    <a class="navbar-brand fw-bold text-primary" href="index.html">Gacha Website</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto fw-semibold small">
-        <li class="nav-item mx-3"><a class="nav-link active" href="#">Wuthering Waves</a></li>
-        <li class="nav-item mx-3"><a class="nav-link" href="genshin.html">Genshin Impact</a></li>
-        <li class="nav-item mx-3"><a class="nav-link" href="star_rail.html">Honkai Star Rail</a></li>
-        <li class="nav-item mx-3"><a class="nav-link" href="zenless.html">Zenless</a></li>
-        <li class="nav-item mx-3"><a class="nav-link" href="nikke.html">Nikke</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<h1 class="fw-bold">Wuthering Waves – Character Tracker</h1>
+<p>Elke character heeft 6 Resonance icons. Icons zijn alleen klikbaar als Owned is aangevinkt.</p>
 
-<!-- MAIN -->
-<main class="container py-4">
-
-  <h1 class="fw-bold">Wuthering Waves Tracker</h1>
-  <p class="text-muted">Hou je characters, builds en voortgang bij (lokaal opgeslagen).</p>
-
-  <!-- ADD -->
-  <div class="row g-2">
-    <div class="col-md-4"><input id="name" class="form-control" placeholder="Character naam"></div>
-    <div class="col-md-2">
-      <select id="rarity" class="form-select">
-        <option>5★</option><option>4★</option>
-      </select>
-    </div>
-    <div class="col-md-2">
-      <select id="owned" class="form-select">
-        <option value="true">Owned</option>
-        <option value="false">Not owned</option>
-      </select>
-    </div>
-    <div class="col-md-2">
-      <select id="status" class="form-select">
-        <option>Niet begonnen</option>
-        <option>Bezig</option>
-        <option>Af</option>
-        <option>On hold</option>
-      </select>
-    </div>
-    <div class="col-md-2">
-      <button id="add" class="btn btn-primary w-100">+ Add</button>
-    </div>
-  </div>
-
-  <!-- LIST -->
-  <div id="list" class="row mt-4"></div>
-</main>
+<div id="list" class="row g-3"></div>
 
 <script>
-const KEY="ww_tracker_v1";
-const load=()=>JSON.parse(localStorage.getItem(KEY)||"[]");
-const save=d=>localStorage.setItem(KEY,JSON.stringify(d));
-const uid=()=>Math.random().toString(16).slice(2)+Date.now();
+const KEY = "ww_tracker_final_complete";
 
-function progress(c){
-  const l=(c.level||1)/90;
-  const w=(c.weaponLevel||1)/90;
-  const s=((c.skill1||1)+(c.skill2||1)+(c.skill3||1)+(c.forte||1))/40;
-  return Math.round((l*.4+w*.2+s*.4)*100);
+/* ---------- CHARACTERS ---------- */
+const CHARACTERS = [
+  {id:"augusta",name:"Augusta",rarity:"5★",image:"assets/wuwa/icons/augusta.jpg",icons:["assets/wuwa/resonance/augusta/1.png","assets/wuwa/resonance/augusta/2.png","assets/wuwa/resonance/augusta/3.png","assets/wuwa/resonance/augusta/4.png","assets/wuwa/resonance/augusta/5.png","assets/wuwa/resonance/augusta/6.png"]},
+  {id:"brant",name:"Brant",rarity:"5★",image:"assets/wuwa/icons/brant.jpg",icons:["assets/wuwa/resonance/brant/1.png","assets/wuwa/resonance/brant/2.png","assets/wuwa/resonance/brant/3.png","assets/wuwa/resonance/brant/4.png","assets/wuwa/resonance/brant/5.png","assets/wuwa/resonance/brant/6.png"]},
+  {id:"calcharo",name:"Calcharo",rarity:"5★",image:"assets/wuwa/icons/calcharo.jpg",icons:["assets/wuwa/resonance/calcharo/1.png","assets/wuwa/resonance/calcharo/2.png","assets/wuwa/resonance/calcharo/3.png","assets/wuwa/resonance/calcharo/4.png","assets/wuwa/resonance/calcharo/5.png","assets/wuwa/resonance/calcharo/6.png"]},
+  {id:"camellya",name:"Camellya",rarity:"5★",image:"assets/wuwa/icons/camellya.jpg",icons:["assets/wuwa/resonance/camellya/1.png","assets/wuwa/resonance/camellya/2.png","assets/wuwa/resonance/camellya/3.png","assets/wuwa/resonance/camellya/4.png","assets/wuwa/resonance/camellya/5.png","assets/wuwa/resonance/camellya/6.png"]},
+  {id:"cantarella",name:"Cantarella",rarity:"5★",image:"assets/wuwa/icons/cantarella.jpg",icons:["assets/wuwa/resonance/cantarella/1.png","assets/wuwa/resonance/cantarella/2.png","assets/wuwa/resonance/cantarella/3.png","assets/wuwa/resonance/cantarella/4.png","assets/wuwa/resonance/cantarella/5.png","assets/wuwa/resonance/cantarella/6.png"]},
+  {id:"carlotta",name:"Carlotta",rarity:"5★",image:"assets/wuwa/icons/carlotta.jpg",icons:["assets/wuwa/resonance/carlotta/1.png","assets/wuwa/resonance/carlotta/2.png","assets/wuwa/resonance/carlotta/3.png","assets/wuwa/resonance/carlotta/4.png","assets/wuwa/resonance/carlotta/5.png","assets/wuwa/resonance/carlotta/6.png"]},
+  {id:"cartethyia",name:"Cartethyia",rarity:"5★",image:"assets/wuwa/icons/cartethyia.jpg",icons:["assets/wuwa/resonance/cartethyia/1.png","assets/wuwa/resonance/cartethyia/2.png","assets/wuwa/resonance/cartethyia/3.png","assets/wuwa/resonance/cartethyia/4.png","assets/wuwa/resonance/cartethyia/5.png","assets/wuwa/resonance/cartethyia/6.png"]},
+  {id:"changli",name:"Changli",rarity:"5★",image:"assets/wuwa/icons/changli.jpg",icons:["assets/wuwa/resonance/changli/1.png","assets/wuwa/resonance/changli/2.png","assets/wuwa/resonance/changli/3.png","assets/wuwa/resonance/changli/4.png","assets/wuwa/resonance/changli/5.png","assets/wuwa/resonance/changli/6.png"]},
+  {id:"chisa",name:"Chisa",rarity:"5★",image:"assets/wuwa/icons/chisa.jpg",icons:["assets/wuwa/resonance/chisa/1.png","assets/wuwa/resonance/chisa/2.png","assets/wuwa/resonance/chisa/3.png","assets/wuwa/resonance/chisa/4.png","assets/wuwa/resonance/chisa/5.png","assets/wuwa/resonance/chisa/6.png"]},
+  {id:"ciaccona",name:"Ciaccona",rarity:"5★",image:"assets/wuwa/icons/ciaccona.jpg",icons:["assets/wuwa/resonance/ciaccona/1.png","assets/wuwa/resonance/ciaccona/2.png","assets/wuwa/resonance/ciaccona/3.png","assets/wuwa/resonance/ciaccona/4.png","assets/wuwa/resonance/ciaccona/5.png","assets/wuwa/resonance/ciaccona/6.png"]},
+  {id:"encore",name:"Encore",rarity:"5★",image:"assets/wuwa/icons/encore.jpg",icons:["assets/wuwa/resonance/encore/1.png","assets/wuwa/resonance/encore/2.png","assets/wuwa/resonance/encore/3.png","assets/wuwa/resonance/encore/4.png","assets/wuwa/resonance/encore/5.png","assets/wuwa/resonance/encore/6.png"]},
+  {id:"galbrena",name:"Galbrena",rarity:"5★",image:"assets/wuwa/icons/galbrena.jpg",icons:["assets/wuwa/resonance/galbrena/1.png","assets/wuwa/resonance/galbrena/2.png","assets/wuwa/resonance/galbrena/3.png","assets/wuwa/resonance/galbrena/4.png","assets/wuwa/resonance/galbrena/5.png","assets/wuwa/resonance/galbrena/6.png"]},
+  {id:"iuno",name:"Iuno",rarity:"5★",image:"assets/wuwa/icons/iuno.jpg",icons:["assets/wuwa/resonance/iuno/1.png","assets/wuwa/resonance/iuno/2.png","assets/wuwa/resonance/iuno/3.png","assets/wuwa/resonance/iuno/4.png","assets/wuwa/resonance/iuno/5.png","assets/wuwa/resonance/iuno/6.png"]},
+  {id:"jianxin",name:"Jianxin",rarity:"5★",image:"assets/wuwa/icons/jianxin.jpg",icons:["assets/wuwa/resonance/jianxin/1.png","assets/wuwa/resonance/jianxin/2.png","assets/wuwa/resonance/jianxin/3.png","assets/wuwa/resonance/jianxin/4.png","assets/wuwa/resonance/jianxin/5.png","assets/wuwa/resonance/jianxin/6.png"]},
+  {id:"jinhsi",name:"Jinhsi",rarity:"5★",image:"assets/wuwa/icons/jinhsi.jpg",icons:["assets/wuwa/resonance/jinhsi/1.png","assets/wuwa/resonance/jinhsi/2.png","assets/wuwa/resonance/jinhsi/3.png","assets/wuwa/resonance/jinhsi/4.png","assets/wuwa/resonance/jinhsi/5.png","assets/wuwa/resonance/jinhsi/6.png"]},
+  {id:"jiyan",name:"Jiyan",rarity:"5★",image:"assets/wuwa/icons/jiyan.jpg",icons:["assets/wuwa/resonance/jiyan/1.png","assets/wuwa/resonance/jiyan/2.png","assets/wuwa/resonance/jiyan/3.png","assets/wuwa/resonance/jiyan/4.png","assets/wuwa/resonance/jiyan/5.png","assets/wuwa/resonance/jiyan/6.png"]},
+  {id:"lingyang",name:"Lingyang",rarity:"5★",image:"assets/wuwa/icons/lingyang.jpg",icons:["assets/wuwa/resonance/lingyang/1.png","assets/wuwa/resonance/lingyang/2.png","assets/wuwa/resonance/lingyang/3.png","assets/wuwa/resonance/lingyang/4.png","assets/wuwa/resonance/lingyang/5.png","assets/wuwa/resonance/lingyang/6.png"]},
+  {id:"lupa",name:"Lupa",rarity:"5★",image:"assets/wuwa/icons/lupa.jpg",icons:["assets/wuwa/resonance/lupa/1.png","assets/wuwa/resonance/lupa/2.png","assets/wuwa/resonance/lupa/3.png","assets/wuwa/resonance/lupa/4.png","assets/wuwa/resonance/lupa/5.png","assets/wuwa/resonance/lupa/6.png"]},
+  {id:"lynae",name:"Lynae",rarity:"5★",image:"assets/wuwa/icons/lynae.jpg",icons:["assets/wuwa/resonance/lynae/1.png","assets/wuwa/resonance/lynae/2.png","assets/wuwa/resonance/lynae/3.png","assets/wuwa/resonance/lynae/4.png","assets/wuwa/resonance/lynae/5.png","assets/wuwa/resonance/lynae/6.png"]},
+  {id:"mornye",name:"Mornye",rarity:"5★",image:"assets/wuwa/icons/mornye.jpg",icons:["assets/wuwa/resonance/mornye/1.png","assets/wuwa/resonance/mornye/2.png","assets/wuwa/resonance/mornye/3.png","assets/wuwa/resonance/mornye/4.png","assets/wuwa/resonance/mornye/5.png","assets/wuwa/resonance/mornye/6.png"]},
+  {id:"phoebe",name:"Phoebe",rarity:"5★",image:"assets/wuwa/icons/phoebe.jpg",icons:["assets/wuwa/resonance/phoebe/1.png","assets/wuwa/resonance/phoebe/2.png","assets/wuwa/resonance/phoebe/3.png","assets/wuwa/resonance/phoebe/4.png","assets/wuwa/resonance/phoebe/5.png","assets/wuva/resonance/phoebe/6.png"]},
+  {id:"phrolova",name:"Phrolova",rarity:"5★",image:"assets/wuwa/icons/phrolova.jpg",icons:["assets/wuwa/resonance/phrolova/1.png","assets/wuwa/resonance/phrolova/2.png","assets/wuwa/resonance/phrolova/3.png","assets/wuwa/resonance/phrolova/4.png","assets/wuwa/resonance/phrolova/5.png","assets/wuwa/resonance/phrolova/6.png"]},
+  {id:"qiuyuan",name:"Qiuyuan",rarity:"5★",image:"assets/wuwa/icons/qiuyuan.jpg",icons:["assets/wuwa/resonance/qiuyuan/1.png","assets/wuwa/resonance/qiuyuan/2.png","assets/wuwa/resonance/qiuyuan/3.png","assets/wuwa/resonance/qiuyuan/4.png","assets/wuwa/resonance/qiuyuan/5.png","assets/wuwa/resonance/qiuyuan/6.png"]},
+  {id:"roccia",name:"Roccia",rarity:"5★",image:"assets/wuwa/icons/roccia.jpg",icons:["assets/wuwa/resonance/roccia/1.png","assets/wuwa/resonance/roccia/2.png","assets/wuwa/resonance/roccia/3.png","assets/wuwa/resonance/roccia/4.png","assets/wuwa/resonance/roccia/5.png","assets/wuwa/resonance/roccia/6.png"]},
+  {id:"shorekeeper",name:"Shorekeeper",rarity:"5★",image:"assets/wuwa/icons/shorekeeper.jpg",icons:["assets/wuwa/resonance/shorekeeper/1.png","assets/wuwa/resonance/shorekeeper/2.png","assets/wuwa/resonance/shorekeeper/3.png","assets/wuwa/resonance/shorekeeper/4.png","assets/wuwa/resonance/shorekeeper/5.png","assets/wuwa/resonance/shorekeeper/6.png"]},
+  {id:"verina",name:"Verina",rarity:"5★",image:"assets/wuwa/icons/verina.jpg",icons:["assets/wuwa/resonance/verina/1.png","assets/wuwa/resonance/verina/2.png","assets/wuwa/resonance/verina/3.png","assets/wuwa/resonance/verina/4.png","assets/wuwa/resonance/verina/5.png","assets/wuwa/resonance/verina/6.png"]},
+  {id:"xiangli-yao",name:"Xiangli Yao",rarity:"5★",image:"assets/wuwa/icons/xiangli-yao.jpg",icons:["assets/wuwa/resonance/xiangli-yao/1.png","assets/wuwa/resonance/xiangli-yao/2.png","assets/wuwa/resonance/xiangli-yao/3.png","assets/wuwa/resonance/xiangli-yao/4.png","assets/wuwa/resonance/xiangli-yao/5.png","assets/wuwa/resonance/xiangli-yao/6.png"]},
+  {id:"yinlin",name:"Yinlin",rarity:"5★",image:"assets/wuwa/icons/yinlin.jpg",icons:["assets/wuwa/resonance/yinlin/1.png","assets/wuwa/resonance/yinlin/2.png","assets/wuwa/resonance/yinlin/3.png","assets/wuwa/resonance/yinlin/4.png","assets/wuwa/resonance/yinlin/5.png","assets/wuwa/resonance/yinlin/6.png"]},
+  {id:"zani",name:"Zani",rarity:"5★",image:"assets/wuwa/icons/zani.jpg",icons:["assets/wuwa/resonance/zani/1.png","assets/wuwa/resonance/zani/2.png","assets/wuwa/resonance/zani/3.png","assets/wuwa/resonance/zani/4.png","assets/wuwa/resonance/zani/5.png","assets/wuwa/resonance/zani/6.png"]},
+  {id:"zhezhi",name:"Zhezhi",rarity:"5★",image:"assets/wuwa/icons/zhezhi.jpg",icons:["assets/wuwa/resonance/zhezhi/1.png","assets/wuwa/resonance/zhezhi/2.png","assets/wuwa/resonance/zhezhi/3.png","assets/wuwa/resonance/zhezhi/4.png","assets/wuwa/resonance/zhezhi/5.png","assets/wuwa/resonance/zhezhi/6.png"]}
+];
+
+/* ---------- DATA ---------- */
+function defaultChar(){
+  return {
+    owned:false,
+    weapon:false,
+    level:1,
+    chain:0,
+    skills:{
+      basic:1,
+      skill:1,
+      forte:1,
+      liberation:1,
+      outro:1
+    }
+  };
 }
 
+function load(){
+  const s = localStorage.getItem(KEY);
+  const data = s ? JSON.parse(s) : {};
+  CHARACTERS.forEach(c=>{
+    if(!data[c.id]) data[c.id] = defaultChar();
+  });
+  save(data);
+  return data;
+}
+
+function save(d){
+  localStorage.setItem(KEY,JSON.stringify(d));
+}
+
+function clamp(v,min,max){
+  v = Number(v);
+  if(isNaN(v)) return min;
+  return Math.max(min,Math.min(max,v));
+}
+
+/* ---------- RENDER ---------- */
 function render(){
-  const list=document.getElementById("list");
+  const data = load();
+  const list = document.getElementById("list");
   list.innerHTML="";
-  load().forEach(c=>{
-    const p=progress(c);
-    const col=document.createElement("div");
-    col.className="col-md-6";
-    col.innerHTML=`
-      <div class="tracker-card">
-        <strong>${c.name}</strong>
-        <span class="pill">${c.rarity}</span>
-        <span class="pill">${c.owned?"Owned":"Not owned"}</span>
 
-        <div class="mt-2">
-          Level <input data-k="level" data-id="${c.id}" type="number" min="1" max="90" value="${c.level}">
-          Weapon <input data-k="weaponLevel" data-id="${c.id}" type="number" min="1" max="90" value="${c.weaponLevel}">
+  CHARACTERS.forEach(c=>{
+    const d = data[c.id];
+    const owned = d.owned;
+
+    const col = document.createElement("div");
+    col.className="col-md-6 col-lg-4";
+
+    col.innerHTML = `
+    <div class="card p-3">
+      <div class="char-header">
+        <div class="char-left">
+          <img src="${c.image}" class="char-img">
+
+          <div class="chain-icons">
+            ${[1,2,3,4,5,6].map(n=>`
+              <img
+                src="assets/wuwa/resonance/${c.id}/${n}.png"
+                class="chain-icon
+                  ${d.chain>=n?'active':''}
+                  ${owned?'clickable':'disabled'}"
+                ${owned ? `onclick="setChain('${c.id}',${n})"` : ``}
+                onerror="this.onerror=null;this.src='assets/wuwa/resonance/placeholder.png'">
+            `).join("")}
+          </div>
         </div>
 
-        <div class="mt-2">
-          <div class="bar"><div style="width:${p}%"></div></div>
-          <small>${p}%</small>
+        <div class="char-info">
+          <strong>${c.name}</strong>
+          <span class="pill">${c.rarity}</span>
+
+          <div class="mt-2">
+            Level
+            <input type="text" value="${d.level}"
+              oninput="setVal('${c.id}','level',this.value,1,90)"
+              style="width:70px">
+          </div>
+
+          <div class="form-check mt-2">
+            <input class="form-check-input" type="checkbox"
+              ${owned?"checked":""}
+              onchange="setOwned('${c.id}',this.checked)">
+            <label class="form-check-label">Owned</label>
+          </div>
         </div>
-      </div>`;
+      </div>
+
+      <hr>
+
+      ${Object.entries(d.skills).map(([k,v])=>`
+        <div class="skill-row">
+          <span>${k}</span>
+          <input type="text" value="${v}"
+            oninput="setSkill('${c.id}','${k}',this.value)"
+            style="width:60px">
+        </div>
+      `).join("")}
+    </div>
+    `;
     list.appendChild(col);
   });
-
-  list.querySelectorAll("input").forEach(i=>{
-    i.oninput=()=>{
-      const d=load();
-      const o=d.find(x=>x.id===i.dataset.id);
-      o[i.dataset.k]=Number(i.value||1);
-      save(d);
-      render();
-    }
-  });
 }
 
-document.getElementById("add").onclick=()=>{
-  const name=document.getElementById("name").value.trim();
-  if(!name) return alert("Naam invullen");
-  const d=load();
-  d.push({
-    id:uid(),name,
-    rarity:rarity.value,
-    owned:owned.value==="true",
-    status:status.value,
-    level:1,weaponLevel:1,
-    skill1:1,skill2:1,skill3:1,forte:1
-  });
+/* ---------- HANDLERS ---------- */
+function setOwned(id,val){
+  const d = load();
+  d[id].owned = val;
+  if(!val) d[id].chain = 0;
   save(d);
-  name.value="";
   render();
-};
+}
+
+function setChain(id,val){
+  const d = load();
+  d[id].chain = d[id].chain === val ? 0 : val;
+  save(d);
+  render();
+}
+
+function setVal(id,key,val,min,max){
+  const d = load();
+  d[id][key] = clamp(val,min,max);
+  save(d);
+}
+
+function setSkill(id,skill,val){
+  const d = load();
+  d[id].skills[skill] = clamp(val,1,10);
+  save(d);
+}
 
 render();
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
