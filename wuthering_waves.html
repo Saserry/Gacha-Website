@@ -37,6 +37,7 @@ function defaultChar(){
     owned:false,
     level:1,
     chain:0,
+    weapon:0,
     skills:{ basic:1, skill:1, forte:1, liberation:1, outro:1 }
   };
 }
@@ -111,6 +112,19 @@ function render(){
                 onchange="setOwned('${c.id}',this.checked)">
               <label class="form-check-label">Owned</label>
             </div>
+
+            <!-- WEAPON ICONS -->
+            ${c.weapons ? `
+            <div class="weapon-row">
+              ${c.weapons.map((w,i)=>`
+                <img
+                  src="${w}"
+                  class="weapon-icon ${d.weapon===i+1?'active':''}"
+                  onclick="setWeapon('${c.id}',${i+1})"
+                  onerror="this.style.display='none'">
+              `).join("")}
+            </div>
+            ` : ""}
           </div>
         </div>
 
@@ -137,7 +151,10 @@ function render(){
 function setOwned(id,val){
   const d=load();
   d[id].owned=val;
-  if(!val) d[id].chain=0;
+  if(!val){
+    d[id].chain=0;
+    d[id].weapon=0;
+  }
   save(d);
   render();
 }
@@ -145,6 +162,13 @@ function setOwned(id,val){
 function setChain(id,val){
   const d=load();
   d[id].chain = d[id].chain===val ? 0 : val;
+  save(d);
+  render();
+}
+
+function setWeapon(id,val){
+  const d=load();
+  d[id].weapon = d[id].weapon===val ? 0 : val;
   save(d);
   render();
 }

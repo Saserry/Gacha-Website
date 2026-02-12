@@ -11,6 +11,10 @@ const CHARACTERS = [
       "assets/wuwa/resonance/aemeath/4.jpg",
       "assets/wuwa/resonance/aemeath/5.jpg",
       "assets/wuwa/resonance/aemeath/6.jpg"
+    ],
+    weapons:[
+      "assets/wuwa/weapon/icons/sword.jpg",
+      "assets/wuwa/weapon/aemeath.jpg"
     ]
   },
   {
@@ -25,6 +29,10 @@ const CHARACTERS = [
       "assets/wuwa/resonance/augusta/4.jpg",
       "assets/wuwa/resonance/augusta/5.jpg",
       "assets/wuwa/resonance/augusta/6.jpg"
+    ],
+    weapons:[
+      "assets/wuwa/weapon/icons/broadblade.jpg",
+      "assets/wuwa/weapon/augusta.jpg"
     ]
   },
   {
@@ -39,20 +47,10 @@ const CHARACTERS = [
       "assets/wuwa/resonance/brant/4.jpg",
       "assets/wuwa/resonance/brant/5.jpg",
       "assets/wuwa/resonance/brant/6.jpg"
-    ]
-  },
-  {
-    id:"calcharo",
-    name:"Calcharo",
-    rarity:"5★",
-    image:"assets/wuwa/icons/calcharo.jpg",
-    icons:[
-      "assets/wuwa/resonance/calcharo/1.jpg",
-      "assets/wuwa/resonance/calcharo/2.jpg",
-      "assets/wuwa/resonance/calcharo/3.jpg",
-      "assets/wuwa/resonance/calcharo/4.jpg",
-      "assets/wuwa/resonance/calcharo/5.jpg",
-      "assets/wuwa/resonance/calcharo/6.jpg"
+    ],
+    weapons:[
+      "assets/wuwa/weapon/icons/sword.jpg",
+      "assets/wuwa/weapon/brant.jpg"
     ]
   },
   {
@@ -67,6 +65,10 @@ const CHARACTERS = [
       "assets/wuwa/resonance/camellya/4.jpg",
       "assets/wuwa/resonance/camellya/5.jpg",
       "assets/wuwa/resonance/camellya/6.jpg"
+    ],
+    weapons:[
+      "assets/wuwa/weapon/icons/sword.jpg",
+      "assets/wuwa/weapon/camellya.jpg"
     ]
   },
   {
@@ -81,6 +83,10 @@ const CHARACTERS = [
       "assets/wuwa/resonance/cantarella/4.jpg",
       "assets/wuwa/resonance/cantarella/5.jpg",
       "assets/wuwa/resonance/cantarella/6.jpg"
+    ],
+    weapons:[
+      "assets/wuwa/weapon/icons/rectifier.jpg",
+      "assets/wuwa/weapon/cantarella.jpg"
     ]
   },
   {
@@ -95,6 +101,10 @@ const CHARACTERS = [
       "assets/wuwa/resonance/carlotta/4.jpg",
       "assets/wuwa/resonance/carlotta/5.jpg",
       "assets/wuwa/resonance/carlotta/6.jpg"
+    ],
+    weapons:[
+      "assets/wuwa/weapon/icons/pistol.jpg",
+      "assets/wuwa/weapon/carlotta.jpg"
     ]
   },
   {
@@ -109,6 +119,10 @@ const CHARACTERS = [
       "assets/wuwa/resonance/cartethyia/4.jpg",
       "assets/wuwa/resonance/cartethyia/5.jpg",
       "assets/wuwa/resonance/cartethyia/6.jpg"
+    ],
+    weapons:[
+      "assets/wuwa/weapon/icons/sword.jpg",
+      "assets/wuwa/weapon/cartethyia.jpg"
     ]
   },
   {
@@ -123,6 +137,10 @@ const CHARACTERS = [
       "assets/wuwa/resonance/changli/4.jpg",
       "assets/wuwa/resonance/changli/5.jpg",
       "assets/wuwa/resonance/changli/6.jpg"
+    ],
+    weapons:[
+      "assets/wuwa/weapon/icons/sword.jpg",
+      "assets/wuwa/weapon/changli.jpg"
     ]
   },
   {
@@ -137,6 +155,10 @@ const CHARACTERS = [
       "assets/wuwa/resonance/chisa/4.jpg",
       "assets/wuwa/resonance/chisa/5.jpg",
       "assets/wuwa/resonance/chisa/6.jpg"
+    ],
+    weapons:[
+      "assets/wuwa/weapon/icons/broadblade.jpg",
+      "assets/wuwa/weapon/chisa.jpg"
     ]
   },
   {
@@ -151,20 +173,10 @@ const CHARACTERS = [
       "assets/wuwa/resonance/ciaccona/4.jpg",
       "assets/wuwa/resonance/ciaccona/5.jpg",
       "assets/wuwa/resonance/ciaccona/6.jpg"
-    ]
-  },
-  {
-    id:"encore",
-    name:"Encore",
-    rarity:"5★",
-    image:"assets/wuwa/icons/encore.jpg",
-    icons:[
-      "assets/wuwa/resonance/encore/1.jpg",
-      "assets/wuwa/resonance/encore/2.jpg",
-      "assets/wuwa/resonance/encore/3.jpg",
-      "assets/wuwa/resonance/encore/4.jpg",
-      "assets/wuwa/resonance/encore/5.jpg",
-      "assets/wuwa/resonance/encore/6.jpg"
+    ],
+    weapons:[
+      "assets/wuwa/weapon/icons/pistol.jpg",
+      "assets/wuwa/weapon/ciaccona.jpg"
     ]
   },
   {
@@ -179,6 +191,10 @@ const CHARACTERS = [
       "assets/wuwa/resonance/galbrena/4.jpg",
       "assets/wuwa/resonance/galbrena/5.jpg",
       "assets/wuwa/resonance/galbrena/6.jpg"
+    ],
+    weapons:[
+      "assets/wuwa/weapon/icons/pistol.jpg",
+      "assets/wuwa/weapon/galbrena.jpg"
     ]
   },
   {
@@ -193,20 +209,10 @@ const CHARACTERS = [
       "assets/wuwa/resonance/iuno/4.jpg",
       "assets/wuwa/resonance/iuno/5.jpg",
       "assets/wuwa/resonance/iuno/6.jpg"
-    ]
-  },
-  {
-    id:"jianxin",
-    name:"Jianxin",
-    rarity:"5★",
-    image:"assets/wuwa/icons/jianxin.jpg",
-    icons:[
-      "assets/wuwa/resonance/jianxin/1.jpg",
-      "assets/wuwa/resonance/jianxin/2.jpg",
-      "assets/wuwa/resonance/jianxin/3.jpg",
-      "assets/wuwa/resonance/jianxin/4.jpg",
-      "assets/wuwa/resonance/jianxin/5.jpg",
-      "assets/wuwa/resonance/jianxin/6.jpg"
+    ],
+    weapons:[
+      "assets/wuwa/weapon/icons/gauntlet.jpg",
+      "assets/wuwa/weapon/iuno.jpg"
     ]
   },
   {
@@ -221,6 +227,10 @@ const CHARACTERS = [
       "assets/wuwa/resonance/jinhsi/4.jpg",
       "assets/wuwa/resonance/jinhsi/5.jpg",
       "assets/wuwa/resonance/jinhsi/6.jpg"
+    ],
+    weapons:[
+      "assets/wuwa/weapon/icons/broadblade.jpg",
+      "assets/wuwa/weapon/jinhsi.jpg"
     ]
   },
   {
@@ -235,20 +245,10 @@ const CHARACTERS = [
       "assets/wuwa/resonance/jiyan/4.jpg",
       "assets/wuwa/resonance/jiyan/5.jpg",
       "assets/wuwa/resonance/jiyan/6.jpg"
-    ]
-  },
-  {
-    id:"lingyang",
-    name:"Lingyang",
-    rarity:"5★",
-    image:"assets/wuwa/icons/lingyang.jpg",
-    icons:[
-      "assets/wuwa/resonance/lingyang/1.jpg",
-      "assets/wuwa/resonance/lingyang/2.jpg",
-      "assets/wuwa/resonance/lingyang/3.jpg",
-      "assets/wuwa/resonance/lingyang/4.jpg",
-      "assets/wuwa/resonance/lingyang/5.jpg",
-      "assets/wuwa/resonance/lingyang/6.jpg"
+    ],
+    weapons:[
+      "assets/wuwa/weapon/icons/broadblade.jpg",
+      "assets/wuwa/weapon/jiyan.jpg"
     ]
   },
   {
@@ -263,6 +263,10 @@ const CHARACTERS = [
       "assets/wuwa/resonance/lupa/4.jpg",
       "assets/wuwa/resonance/lupa/5.jpg",
       "assets/wuwa/resonance/lupa/6.jpg"
+    ],
+    weapons:[
+      "assets/wuwa/weapon/icons/broadblade.jpg",
+      "assets/wuwa/weapon/lupa.jpg"
     ]
   },
   {
@@ -277,6 +281,10 @@ const CHARACTERS = [
       "assets/wuwa/resonance/luuk-herssen/4.jpg",
       "assets/wuwa/resonance/luuk-herssen/5.jpg",
       "assets/wuwa/resonance/luuk-herssen/6.jpg"
+    ],
+    weapons:[
+      "assets/wuwa/weapons/mornye_1.jpg",
+      "assets/wuwa/weapon/mornye_2.jpg"
     ]
   },
   {
@@ -291,6 +299,10 @@ const CHARACTERS = [
       "assets/wuwa/resonance/lynae/4.jpg",
       "assets/wuwa/resonance/lynae/5.jpg",
       "assets/wuwa/resonance/lynae/6.jpg"
+    ],
+    weapons:[
+      "assets/wuwa/weapon/icons/pistol.jpg",
+      "assets/wuwa/weapon/lynae.jpg"
     ]
   },
   {
@@ -305,6 +317,10 @@ const CHARACTERS = [
       "assets/wuwa/resonance/mornye/4.jpg",
       "assets/wuwa/resonance/mornye/5.jpg",
       "assets/wuwa/resonance/mornye/6.jpg"
+    ],
+    weapons:[
+      "assets/wuwa/weapon/icons/broadblade.jpg",
+      "assets/wuwa/weapon/mornye.jpg"
     ]
   },
   {
@@ -319,6 +335,10 @@ const CHARACTERS = [
       "assets/wuwa/resonance/phoebe/4.jpg",
       "assets/wuwa/resonance/phoebe/5.jpg",
       "assets/wuwa/resonance/phoebe/6.jpg"
+    ],
+    weapons:[
+      "assets/wuwa/weapon/icons/rectifier.jpg",
+      "assets/wuwa/weapon/phoebe.jpg"
     ]
   },
   {
@@ -333,6 +353,10 @@ const CHARACTERS = [
       "assets/wuwa/resonance/phrolova/4.jpg",
       "assets/wuwa/resonance/phrolova/5.jpg",
       "assets/wuwa/resonance/phrolova/6.jpg"
+    ],
+    weapons:[
+      "assets/wuwa/weapon/icons/rectifier.jpg",
+      "assets/wuwa/weapon/phrolova.jpg"
     ]
   },
   {
@@ -347,6 +371,10 @@ const CHARACTERS = [
       "assets/wuwa/resonance/qiuyuan/4.jpg",
       "assets/wuwa/resonance/qiuyuan/5.jpg",
       "assets/wuwa/resonance/qiuyuan/6.jpg"
+    ],
+    weapons:[
+      "assets/wuwa/weapon/icons/sword.jpg",
+      "assets/wuwa/weapon/qiuyuan.jpg"
     ]
   },
   {
@@ -361,6 +389,10 @@ const CHARACTERS = [
       "assets/wuwa/resonance/roccia/4.jpg",
       "assets/wuwa/resonance/roccia/5.jpg",
       "assets/wuwa/resonance/roccia/6.jpg"
+    ],
+    weapons:[
+      "assets/wuwa/weapon/icons/gauntlet.jpg",
+      "assets/wuwa/weapon/roccia.jpg"
     ]
   },
   {
@@ -375,20 +407,10 @@ const CHARACTERS = [
       "assets/wuwa/resonance/shorekeeper/4.jpg",
       "assets/wuwa/resonance/shorekeeper/5.jpg",
       "assets/wuwa/resonance/shorekeeper/6.jpg"
-    ]
-  },
-  {
-    id:"verina",
-    name:"Verina",
-    rarity:"5★",
-    image:"assets/wuwa/icons/verina.jpg",
-    icons:[
-      "assets/wuwa/resonance/verina/1.jpg",
-      "assets/wuwa/resonance/verina/2.jpg",
-      "assets/wuwa/resonance/verina/3.jpg",
-      "assets/wuwa/resonance/verina/4.jpg",
-      "assets/wuwa/resonance/verina/5.jpg",
-      "assets/wuwa/resonance/verina/6.jpg"
+    ],
+    weapons:[
+      "assets/wuwa/weapon/icons/rectifier.jpg",
+      "assets/wuwa/weapon/shorekeeper.jpg"
     ]
   },
   {
@@ -403,6 +425,10 @@ const CHARACTERS = [
       "assets/wuwa/resonance/xiangli-yao/4.jpg",
       "assets/wuwa/resonance/xiangli-yao/5.jpg",
       "assets/wuwa/resonance/xiangli-yao/6.jpg"
+    ],
+    weapons:[
+      "assets/wuwa/weapon/icons/gauntlet.jpg",
+      "assets/wuwa/weapon/xiangli-yao.jpg"
     ]
   },
   {
@@ -417,6 +443,10 @@ const CHARACTERS = [
       "assets/wuwa/resonance/yinlin/4.jpg",
       "assets/wuwa/resonance/yinlin/5.jpg",
       "assets/wuwa/resonance/yinlin/6.jpg"
+    ],
+    weapons:[
+      "assets/wuwa/weapon/icons/rectifier.jpg",
+      "assets/wuwa/weapon/yinlin.jpg"
     ]
   },
   {
@@ -431,6 +461,10 @@ const CHARACTERS = [
       "assets/wuwa/resonance/zani/4.jpg",
       "assets/wuwa/resonance/zani/5.jpg",
       "assets/wuwa/resonance/zani/6.jpg"
+    ],
+    weapons:[
+      "assets/wuwa/weapon/icons/gauntlet.jpg",
+      "assets/wuwa/weapon/zani.jpg"
     ]
   },
   {
@@ -445,6 +479,10 @@ const CHARACTERS = [
       "assets/wuwa/resonance/zhezhi/4.jpg",
       "assets/wuwa/resonance/zhezhi/5.jpg",
       "assets/wuwa/resonance/zhezhi/6.jpg"
+    ],
+    weapons:[
+      "assets/wuwa/weapon/icons/rectifier.jpg",
+      "assets/wuwa/weapon/zhezhi.jpg"
     ]
   },
 ];

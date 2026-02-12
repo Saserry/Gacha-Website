@@ -129,3 +129,28 @@ input{
 .form-check-label{
   color:#ffffff !important;
 }
+/* ===============================
+   WEAPON ICONS
+================================ */
+.weapon-row{
+  display:flex;
+  gap:12px;
+  margin-top:12px;
+}
+
+.weapon-icon{
+  width:48px;
+  height:48px;
+  opacity:.3;
+  transition:.2s;
+  cursor:pointer;
+}
+
+.weapon-icon.active{
+  opacity:1;
+  filter:drop-shadow(0 0 6px rgba(255,200,120,.7));
+}
+
+.weapon-icon:hover{
+  transform:scale(1.12);
+}
