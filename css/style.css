@@ -75,7 +75,7 @@ main{
 .char-left{
   display:flex;
   flex-direction:column;
-  align-items:center;   /* image gecentreerd */
+  align-items:center;
 }
 
 /* CHARACTER IMAGE */
@@ -92,16 +92,16 @@ main{
 ================================ */
 .chain-icons{
   display:flex;
-  gap:10px;
-  margin-top:10px;
-  flex-wrap:nowrap;          /* 🔥 NOOIT BREKEN */
-  justify-content:center;    /* mooi gecentreerd */
+  gap: 40px;                 /* meer ruimte tussen icons */
+  margin-top:14px;
+  flex-wrap:nowrap;
+  justify-content:center;
 }
 
-/* ICONS GROTER */
+/* ICONS */
 .chain-icon{
-  width:48px;                /* 🔥 groot maar clean */
-  height:48px;
+  width:52px;               /* iets groter */
+  height:52px;
   opacity:.25;
   transition:.2s;
 }
@@ -109,7 +109,7 @@ main{
 /* ACTIVE */
 .chain-icon.active{
   opacity:1;
-  filter:drop-shadow(0 0 6px rgba(255,200,120,.6));
+  filter:drop-shadow(0 0 8px rgba(255,200,120,.7));
 }
 
 /* CLICKABLE */
@@ -118,7 +118,7 @@ main{
 }
 
 .chain-icon.clickable:hover{
-  transform:scale(1.15);
+  transform:scale(1.18);
   opacity:1;
 }
 
@@ -157,6 +157,7 @@ main{
   border:1px solid #2b3357;
   font-size:.75rem;
   margin-left:6px;
+  color:#fff;
 }
 
 /* ===============================
