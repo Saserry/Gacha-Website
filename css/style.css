@@ -9,45 +9,16 @@ body{
   margin:0;
   font-family:system-ui;
   background:#0b1020;
-  color:#e7eaf3;
+  color:#ffffff;
 }
 
-/* ===============================
-   NAVBAR
-================================ */
-.navbar{
-  display:flex;
-  gap:10px;
-  padding:12px;
-  background:#0f1730;
-  border-bottom:1px solid #2b3357;
-}
-
-.navbar button{
-  background:#121a33;
-  border:1px solid #2b3357;
-  color:#e7eaf3;
-  padding:10px 14px;
-  border-radius:12px;
-  cursor:pointer;
-}
-
-.navbar button.active{
-  background:#7aa2ff;
-  color:#000;
-  font-weight:bold;
-}
-
-/* ===============================
-   LAYOUT
-================================ */
-main{
-  padding:20px;
-}
-
-.muted{
-  opacity:.7;
-  font-size:12px;
+/* tekst altijd wit */
+h1,h2,h3,h4,h5,h6,
+p,
+span,
+strong,
+label{
+  color:#ffffff;
 }
 
 /* ===============================
@@ -56,96 +27,73 @@ main{
 .card{
   background:#0f1730;
   border:1px solid #2b3357;
-  border-radius:16px;
+  border-radius:18px;
   padding:20px;
+  height:100%;
+  color:#ffffff;
 }
 
 /* ===============================
-   CHARACTER HEADER
+   HEADER
 ================================ */
 .char-header{
   display:flex;
   gap:20px;
-  align-items:flex-start;
 }
 
-/* ===============================
-   IMAGE + ICONS BLOK
-================================ */
 .char-left{
+  width:160px;
+  flex-shrink:0;
   display:flex;
   flex-direction:column;
   align-items:center;
 }
 
-/* CHARACTER IMAGE */
 .char-img{
   width:160px;
   height:160px;
   object-fit:cover;
   border-radius:12px;
-  background:#1b2450;
 }
 
 /* ===============================
-   RESONANCE ICONS (6 OP 1 RIJ)
+   RESONANCE ICONS
 ================================ */
 .chain-icons{
   display:flex;
-  gap: 40px;                 /* meer ruimte tussen icons */
+  justify-content:space-between;
+  width:160px;
   margin-top:14px;
-  flex-wrap:nowrap;
-  justify-content:center;
 }
 
-/* ICONS */
 .chain-icon{
-  width:52px;               /* iets groter */
-  height:52px;
+  width:36px;
+  height:36px;
   opacity:.25;
   transition:.2s;
 }
 
-/* ACTIVE */
 .chain-icon.active{
   opacity:1;
   filter:drop-shadow(0 0 8px rgba(255,200,120,.7));
 }
 
-/* CLICKABLE */
 .chain-icon.clickable{
   cursor:pointer;
 }
 
 .chain-icon.clickable:hover{
-  transform:scale(1.18);
+  transform:scale(1.15);
   opacity:1;
 }
 
-/* DISABLED */
 .chain-icon.disabled{
   cursor:not-allowed;
   opacity:.15;
 }
 
 /* ===============================
-   WEAPON ICON
-================================ */
-.weapon-icon{
-  width:32px;
-  height:32px;
-  margin-top:8px;
-  cursor:pointer;
-  opacity:.3;
-}
-
-.weapon-icon.active{
-  opacity:1;
-  filter:drop-shadow(0 0 6px #ffcc66);
-}
-
-/* ===============================
-   CHARACTER INFO
+   INFO
 ================================ */
 .char-info{
   flex:1;
@@ -157,7 +105,7 @@ main{
   border:1px solid #2b3357;
   font-size:.75rem;
   margin-left:6px;
-  color:#fff;
+  color:#ffffff;
 }
 
 /* ===============================
@@ -166,7 +114,6 @@ main{
 .skill-row{
   display:flex;
   justify-content:space-between;
-  align-items:center;
   margin-bottom:6px;
 }
 
@@ -178,8 +125,7 @@ input{
   padding:4px 6px;
 }
 
-input:focus{
-  outline:none;
-  border-color:#7aa2ff!important;
-  box-shadow:0 0 6px rgba(122,162,255,.6);
+/* checkbox label */
+.form-check-label{
+  color:#ffffff !important;
 }
