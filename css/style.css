@@ -1,50 +1,75 @@
-/* ===============================
-   RESET / GLOBAL
-================================ */
-*{
-  box-sizing:border-box;
-}
-
-html, body{
-  min-height:100%;
-}
+/* ============= BASE ============= */
+*{ box-sizing:border-box; }
 
 body{
   margin:0;
-  background:#0b1020;
-  font-family:system-ui,-apple-system,BlinkMacSystemFont;
+  font-family:system-ui;
+  background:#0b1020;   /* donker blauw */
   color:#ffffff;
 }
 
-/* Bootstrap containers fix */
-.container,
-.container-fluid{
-  background:transparent !important;
+/* Force tekst wit (Bootstrap overrides) */
+body, body *{
+  color:#ffffff;
 }
 
-/* ===============================
-   CARD
-================================ */
-.card{
+/* ============= TITLES ============= */
+.page-title{ color:#fff; }
+.page-subtitle{ color:#fff; opacity:.9; }
+
+/* ============= TABS ============= */
+.tabs{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin:14px 0 6px;
+}
+
+.tab-btn{
+  background:#121a33;
+  border:1px solid #2b3357;
+  color:#fff;
+  padding:10px 14px;
+  border-radius:12px;
+  cursor:pointer;
+  transition:.15s;
+}
+
+.tab-btn:hover{ transform:translateY(-1px); }
+.tab-btn.active{
+  background:#7aa2ff;
+  border-color:#7aa2ff;
+  color:#000 !important;
+  font-weight:700;
+}
+
+/* ============= CARD ============= */
+.tracker-card{
   background:#0f1730;
   border:1px solid #2b3357;
   border-radius:18px;
-  padding:20px;
+  padding:18px;
   height:100%;
-  color:#ffffff;
 }
 
-/* FORCE witte tekst in card */
-.card *{
-  color:#ffffff;
+.tracker-card.is-owned{
+  border-color:rgba(255,204,102,.55);
+  box-shadow:0 0 0 1px rgba(255,204,102,.15);
 }
 
-/* ===============================
-   HEADER
-================================ */
+.sep{
+  border:none;
+  height:1px;
+  background:#2b3357;
+  margin:14px 0;
+  opacity:.8;
+}
+
+/* ============= HEADER ============= */
 .char-header{
   display:flex;
-  gap:18px;
+  gap:16px;
+  align-items:flex-start;
 }
 
 .char-left{
@@ -58,142 +83,176 @@ body{
 .char-img{
   width:160px;
   height:160px;
-  border-radius:12px;
   object-fit:cover;
+  border-radius:12px;
+  background:#1b2450;
 }
 
-/* ===============================
-   RESONANCE ICONS
-================================ */
+.char-img.dim{
+  filter:grayscale(1) brightness(.55);
+  opacity:.9;
+}
+
+/* ============= RESONANCE ICONS ============= */
 .chain-icons{
   display:flex;
   justify-content:space-between;
   width:160px;
-  margin-top:14px;
+  margin-top:12px;
 }
 
 .chain-icon{
   width:36px;
   height:36px;
+  border-radius:8px;
+  background:#1b2450;
   opacity:.25;
-  transition:.2s;
+  transition:.15s;
 }
 
 .chain-icon.active{
   opacity:1;
-  filter:drop-shadow(0 0 8px rgba(255,200,120,.7));
+  filter:drop-shadow(0 0 8px rgba(255,200,120,.65));
 }
 
-.chain-icon.clickable{
-  cursor:pointer;
-}
-
-.chain-icon.clickable:hover{
-  transform:scale(1.15);
-  opacity:1;
-}
+.chain-icon.clickable{ cursor:pointer; }
+.chain-icon.clickable:hover{ transform:scale(1.12); opacity:1; }
 
 .chain-icon.disabled{
-  opacity:.15;
   cursor:not-allowed;
+  opacity:.12;
 }
 
-/* ===============================
-   INFO
-================================ */
-.char-info{
-  flex:1;
-}
+/* ============= INFO ============= */
+.char-info{ flex:1; min-width:0; }
 
-/* >>> HIER ZAT HET PROBLEEM <<< */
-.char-title{
+.top-row{
   display:flex;
-  align-items:center;
-  gap:8px;
-  flex-wrap:nowrap;              /* NIET wrappen */
-  white-space:nowrap;
+  justify-content:space-between;
+  gap:12px;
+  align-items:flex-start;
 }
 
-/* lange namen netjes afkappen */
-.char-title strong{
-  max-width:140px;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
+.name-wrap{ min-width:0; }
+
+.char-name{
+  font-weight:800;
+  font-size:18px;
+  line-height:1.15;
+  word-break:break-word; /* lange namen */
+}
+
+.meta{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:6px;
 }
 
 .pill{
+  display:inline-flex;
+  align-items:center;
   padding:4px 10px;
   border-radius:999px;
   border:1px solid #2b3357;
   font-size:.75rem;
+  opacity:.95;
+}
+
+.pill-standard{
+  border-color:rgba(122,162,255,.65);
+  box-shadow:0 0 0 1px rgba(122,162,255,.15);
+}
+
+.owned-wrap{
   flex-shrink:0;
 }
 
-.owned{
+.owned-inline{
   display:flex;
   align-items:center;
-  gap:4px;
-  font-size:.85rem;
-  flex-shrink:0;
+  gap:8px;
+  white-space:nowrap;
+  user-select:none;
 }
 
-/* ===============================
-   INPUTS
-================================ */
+.owned-inline input{
+  width:18px;
+  height:18px;
+}
+
+/* Level row */
+.level-row{
+  margin-top:12px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.label{ opacity:.95; }
+
+/* Inputs */
 input{
   background:#121a33 !important;
+  color:#fff !important;
   border:1px solid #2b3357 !important;
-  color:#ffffff !important;
-  border-radius:6px;
-  padding:4px 6px;
-  width:60px;
+  border-radius:8px;
+  padding:6px 8px;
+  outline:none;
 }
 
-/* checkbox */
-input[type="checkbox"]{
-  accent-color:#5aa2ff;
+input:focus{
+  border-color:#7aa2ff !important;
+  box-shadow:0 0 0 3px rgba(122,162,255,.2);
 }
 
-/* ===============================
-   SKILLS
-================================ */
-.skill-row{
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:6px;
-}
-
-/* ===============================
-   WEAPON ICONS
-================================ */
+/* ============= WEAPONS ============= */
 .weapon-row{
+  margin-top:12px;
   display:flex;
   gap:12px;
-  margin-top:12px;
+  align-items:center;
 }
 
 .weapon-icon{
-  width:48px;
-  height:48px;
-  opacity:.25;
-  transition:.2s;
+  width:46px;
+  height:46px;
+  border-radius:10px;
+  background:#1b2450;
+  opacity:.35;
+  transition:.15s;
 }
 
-.weapon-icon.active{
+.weapon-icon.base{
+  opacity:1; /* altijd aan */
+  filter:drop-shadow(0 0 7px rgba(122,162,255,.35));
+}
+
+.weapon-icon.extra.active{
   opacity:1;
-  filter:drop-shadow(0 0 6px rgba(255,200,120,.7));
+  filter:drop-shadow(0 0 8px rgba(255,200,120,.65));
 }
 
-.weapon-icon.clickable{
-  cursor:pointer;
-}
-
-.weapon-icon.clickable:hover{
-  transform:scale(1.12);
-  opacity:1;
-}
+.weapon-icon.clickable{ cursor:pointer; }
+.weapon-icon.clickable:hover{ transform:scale(1.10); opacity:1; }
 
 .weapon-icon.disabled{
-  opacity:.15;
+  cursor:not-allowed;
+  opacity:.12;
+}
+
+/* ============= SKILLS ============= */
+.skills{ margin-top:2px; }
+
+.skill-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:8px;
+  gap:10px;
+}
+
+.skill-name{
+  text-transform:capitalize;
+  opacity:.95;
 }

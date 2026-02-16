@@ -1,183 +1,232 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Wuthering Waves – Character Tracker</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wuthering Waves – Character Tracker</title>
 
-<!-- Bootstrap (alleen grid) -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap (grid) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Custom CSS -->
-<link rel="stylesheet" href="css/style.css">
+  <!-- jouw css -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+  <div class="container-fluid px-4 py-4">
 
-<div class="container-fluid px-4 py-4">
-  <h1 class="fw-bold text-white mb-1">Wuthering Waves – Character Tracker</h1>
-  <p class="text-white-50 mb-4">
-    Resonance & weapons zijn alleen klikbaar als Owned is aangevinkt.
-  </p>
+    <h1 class="fw-bold page-title">Wuthering Waves – Character Tracker</h1>
+    <p class="page-subtitle">Resonance icons en weapon toggle werken alleen als Owned aan staat.</p>
 
-  <div id="list" class="row g-4"></div>
-</div>
+    <!-- TABS -->
+    <div class="tabs" id="tabs">
+      <button class="tab-btn active" data-tab="all">All</button>
+      <button class="tab-btn" data-tab="five">5★</button>
+      <button class="tab-btn" data-tab="four">4★</button>
+      <button class="tab-btn" data-tab="standard">Standard</button>
+      <button class="tab-btn" data-tab="owned">Owned</button>
+      <button class="tab-btn" data-tab="notowned">Not Owned</button>
+    </div>
 
-<script src="js/characters.js"></script>
+    <div id="list" class="row g-4 mt-2"></div>
 
-<script>
-const KEY = "ww_tracker_final";
-const PLACEHOLDER = "assets/wuwa/resonance/placeholder.jpg";
+  </div>
 
-/* ===============================
-   STATE
-================================ */
-function defaultChar(){
-  return {
-    owned:false,
-    level:1,
-    chain:0,
-    weapon2:false, // alleen wapen 2 togglebaar
-    skills:{ basic:1, skill:1, forte:1, liberation:1, outro:1 }
-  };
-}
+  <!-- characters data -->
+  <script src="js/characters.js"></script>
 
-function load(){
-  const s = localStorage.getItem(KEY);
-  const d = s ? JSON.parse(s) : {};
-  CHARACTERS.forEach(c=>{
-    if(!d[c.id]) d[c.id] = defaultChar();
-  });
-  save(d);
-  return d;
-}
+  <script>
+    const KEY = "ww_tracker_final_v2";
+    const PLACEHOLDER = "assets/wuwa/resonance/placeholder.jpg";
 
-function save(d){
-  localStorage.setItem(KEY,JSON.stringify(d));
-}
+    let ACTIVE_TAB = "all";
 
-function clamp(v,min,max){
-  v = Number(v);
-  return isNaN(v)?min:Math.max(min,Math.min(max,v));
-}
+    function defaultChar(){
+      return {
+        owned:false,
+        level:1,
+        chain:0,
+        weaponExtra:false,   // 👈 alleen het 2e wapen (extra) toggle
+        skills:{ basic:1, skill:1, forte:1, liberation:1, outro:1 }
+      };
+    }
 
-/* ===============================
-   RENDER
-================================ */
-function render(){
-  const data = load();
-  const list = document.getElementById("list");
-  list.innerHTML="";
+    function load(){
+      const s = localStorage.getItem(KEY);
+      const d = s ? JSON.parse(s) : {};
+      CHARACTERS.forEach(c=>{
+        if(!d[c.id]) d[c.id] = defaultChar();
+      });
+      localStorage.setItem(KEY, JSON.stringify(d));
+      return d;
+    }
 
-  CHARACTERS.forEach(c=>{
-    const d = data[c.id];
-    const owned = d.owned;
+    function save(d){
+      localStorage.setItem(KEY, JSON.stringify(d));
+    }
 
-    const col = document.createElement("div");
-    col.className = "col-12 col-md-6 col-xl-3";
+    function clamp(v,min,max){
+      v = Number(v);
+      return isNaN(v) ? min : Math.max(min, Math.min(max, v));
+    }
 
-    col.innerHTML = `
-      <div class="card">
-        <div class="char-header">
-          <div class="char-left">
-            <img src="${c.image}" class="char-img">
+    function iconError(img){
+      img.onerror=null;
+      img.src=PLACEHOLDER;
+    }
 
-            <div class="chain-icons">
-              ${c.icons.map((icon,i)=>`
-                <img
-                  src="${icon}"
-                  class="chain-icon ${d.chain>=i+1?'active':''} ${owned?'clickable':'disabled'}"
-                  ${owned?`onclick="setChain('${c.id}',${i+1})"`:''}
-                  onerror="this.src='${PLACEHOLDER}'">
+    function passesTab(c, d){
+      if(ACTIVE_TAB === "five" && c.rarity !== "5★") return false;
+      if(ACTIVE_TAB === "four" && c.rarity !== "4★") return false;
+      if(ACTIVE_TAB === "standard" && c.standard !== true) return false;
+      if(ACTIVE_TAB === "owned" && d.owned !== true) return false;
+      if(ACTIVE_TAB === "notowned" && d.owned !== false) return false;
+      return true;
+    }
+
+    function render(){
+      const data = load();
+      const list = document.getElementById("list");
+      list.innerHTML = "";
+
+      CHARACTERS.forEach(c=>{
+        const d = data[c.id];
+        const owned = d.owned;
+
+        if(!passesTab(c, d)) return;
+
+        const col = document.createElement("div");
+        col.className = "col-12 col-md-6 col-xl-3";
+
+        // weapons: [baseIcon, extraIcon]
+        const hasWeapons = Array.isArray(c.weapons) && c.weapons.length >= 1;
+
+        col.innerHTML = `
+          <div class="tracker-card ${owned ? "is-owned" : "not-owned"}">
+            <div class="char-header">
+              <div class="char-left">
+                <img src="${c.image}" class="char-img ${owned ? "" : "dim"}" onerror="this.style.display='none'">
+
+                <div class="chain-icons">
+                  ${c.icons.map((icon,i)=>`
+                    <img
+                      src="${icon}"
+                      class="chain-icon ${d.chain>=i+1 ? "active" : ""} ${owned ? "clickable" : "disabled"}"
+                      ${owned ? `onclick="setChain('${c.id}',${i+1})"` : ""}
+                      onerror="iconError(this)">
+                  `).join("")}
+                </div>
+              </div>
+
+              <div class="char-info">
+                <div class="top-row">
+                  <div class="name-wrap">
+                    <div class="char-name">${c.name}</div>
+                    <div class="meta">
+                      <span class="pill">${c.rarity}</span>
+                      ${c.standard ? `<span class="pill pill-standard">Standard</span>` : ``}
+                    </div>
+                  </div>
+
+                  <div class="owned-wrap">
+                    <label class="owned-inline">
+                      <input type="checkbox" ${owned ? "checked" : ""} onchange="setOwned('${c.id}', this.checked)">
+                      <span>Owned</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="level-row">
+                  <span class="label">Level</span>
+                  <input value="${d.level}" style="width:70px" oninput="setLevel('${c.id}', this.value)">
+                </div>
+
+                ${hasWeapons ? `
+                  <div class="weapon-row">
+                    <img src="${c.weapons[0]}" class="weapon-icon base active" title="Weapon type (altijd aan)" onerror="this.style.display='none'">
+                    ${c.weapons[1] ? `
+                      <img
+                        src="${c.weapons[1]}"
+                        class="weapon-icon extra ${owned ? "clickable" : "disabled"} ${d.weaponExtra ? "active" : ""}"
+                        title="Extra weapon (toggle)"
+                        ${owned ? `onclick="toggleWeaponExtra('${c.id}')"` : ``}
+                        onerror="this.style.display='none'">
+                    ` : ``}
+                  </div>
+                ` : ``}
+              </div>
+            </div>
+
+            <hr class="sep">
+
+            <div class="skills">
+              ${Object.entries(d.skills).map(([k,v])=>`
+                <div class="skill-row">
+                  <span class="skill-name">${k}</span>
+                  <input value="${v}" style="width:70px" oninput="setSkill('${c.id}','${k}', this.value)">
+                </div>
               `).join("")}
             </div>
           </div>
+        `;
 
-          <div class="char-info">
-            <div class="char-title">
-              <strong>${c.name}</strong>
-              <span class="pill">${c.rarity}</span>
+        list.appendChild(col);
+      });
+    }
 
-              <label class="owned">
-                <input type="checkbox" ${owned?'checked':''}
-                  onchange="setOwned('${c.id}',this.checked)">
-                Owned
-              </label>
-            </div>
+    // handlers
+    function setOwned(id,val){
+      const d = load();
+      d[id].owned = val;
 
-            <div class="mt-2">
-              Level
-              <input value="${d.level}"
-                oninput="setLevel('${c.id}',this.value)">
-            </div>
+      if(!val){
+        d[id].chain = 0;
+        d[id].weaponExtra = false; // reset extra
+      }
+      save(d);
+      render();
+    }
 
-            ${c.weapons ? `
-            <div class="weapon-row">
-              <img src="${c.weapons[0]}" class="weapon-icon active">
-              <img src="${c.weapons[1]}"
-                class="weapon-icon ${d.weapon2?'active':''} ${owned?'clickable':'disabled'}"
-                ${owned?`onclick="toggleWeapon2('${c.id}')"`:''}>
-            </div>` : ``}
-          </div>
-        </div>
+    function setChain(id,val){
+      const d = load();
+      // toggle: klik zelfde icon -> reset naar 0
+      d[id].chain = (d[id].chain === val) ? 0 : val;
+      save(d);
+      render();
+    }
 
-        <hr>
+    function toggleWeaponExtra(id){
+      const d = load();
+      // alleen toggle extra, base blijft altijd aan
+      d[id].weaponExtra = !d[id].weaponExtra;
+      save(d);
+      render();
+    }
 
-        ${Object.entries(d.skills).map(([k,v])=>`
-          <div class="skill-row">
-            <span>${k}</span>
-            <input value="${v}"
-              oninput="setSkill('${c.id}','${k}',this.value)">
-          </div>
-        `).join("")}
-      </div>
-    `;
-    list.appendChild(col);
-  });
-}
+    function setLevel(id,val){
+      const d = load();
+      d[id].level = clamp(val, 1, 90);
+      save(d);
+    }
 
-/* ===============================
-   HANDLERS
-================================ */
-function setOwned(id,val){
-  const d=load();
-  d[id].owned=val;
-  if(!val){
-    d[id].chain=0;
-    d[id].weapon2=false;
-  }
-  save(d);
-  render();
-}
+    function setSkill(id,skill,val){
+      const d = load();
+      d[id].skills[skill] = clamp(val, 1, 10);
+      save(d);
+    }
 
-function toggleWeapon2(id){
-  const d=load();
-  d[id].weapon2=!d[id].weapon2;
-  save(d);
-  render();
-}
+    // tabs
+    document.getElementById("tabs").addEventListener("click", (e)=>{
+      const btn = e.target.closest(".tab-btn");
+      if(!btn) return;
 
-function setChain(id,val){
-  const d=load();
-  d[id].chain=d[id].chain===val?0:val;
-  save(d);
-  render();
-}
+      document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));
+      btn.classList.add("active");
+      ACTIVE_TAB = btn.dataset.tab;
+      render();
+    });
 
-function setLevel(id,val){
-  const d=load();
-  d[id].level=clamp(val,1,90);
-  save(d);
-}
-
-function setSkill(id,skill,val){
-  const d=load();
-  d[id].skills[skill]=clamp(val,1,10);
-  save(d);
-}
-
-render();
-</script>
-
+    render();
+  </script>
 </body>
 </html>
