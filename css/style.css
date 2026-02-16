@@ -1,24 +1,25 @@
 /* ===============================
-   BASE
+   RESET / GLOBAL
 ================================ */
 *{
   box-sizing:border-box;
 }
 
+html, body{
+  min-height:100%;
+}
+
 body{
   margin:0;
-  font-family:system-ui;
   background:#0b1020;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont;
   color:#ffffff;
 }
 
-/* tekst altijd wit */
-h1,h2,h3,h4,h5,h6,
-p,
-span,
-strong,
-label{
-  color:#ffffff;
+/* Bootstrap containers fix */
+.container,
+.container-fluid{
+  background:transparent !important;
 }
 
 /* ===============================
@@ -33,12 +34,17 @@ label{
   color:#ffffff;
 }
 
+/* FORCE witte tekst in card */
+.card *{
+  color:#ffffff;
+}
+
 /* ===============================
    HEADER
 ================================ */
 .char-header{
   display:flex;
-  gap:20px;
+  gap:18px;
 }
 
 .char-left{
@@ -52,8 +58,8 @@ label{
 .char-img{
   width:160px;
   height:160px;
-  object-fit:cover;
   border-radius:12px;
+  object-fit:cover;
 }
 
 /* ===============================
@@ -88,8 +94,8 @@ label{
 }
 
 .chain-icon.disabled{
-  cursor:not-allowed;
   opacity:.15;
+  cursor:not-allowed;
 }
 
 /* ===============================
@@ -99,13 +105,54 @@ label{
   flex:1;
 }
 
+/* >>> HIER ZAT HET PROBLEEM <<< */
+.char-title{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:nowrap;              /* NIET wrappen */
+  white-space:nowrap;
+}
+
+/* lange namen netjes afkappen */
+.char-title strong{
+  max-width:140px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
 .pill{
   padding:4px 10px;
   border-radius:999px;
   border:1px solid #2b3357;
   font-size:.75rem;
-  margin-left:6px;
-  color:#ffffff;
+  flex-shrink:0;
+}
+
+.owned{
+  display:flex;
+  align-items:center;
+  gap:4px;
+  font-size:.85rem;
+  flex-shrink:0;
+}
+
+/* ===============================
+   INPUTS
+================================ */
+input{
+  background:#121a33 !important;
+  border:1px solid #2b3357 !important;
+  color:#ffffff !important;
+  border-radius:6px;
+  padding:4px 6px;
+  width:60px;
+}
+
+/* checkbox */
+input[type="checkbox"]{
+  accent-color:#5aa2ff;
 }
 
 /* ===============================
@@ -117,18 +164,6 @@ label{
   margin-bottom:6px;
 }
 
-input{
-  background:#121a33!important;
-  color:#ffffff!important;
-  border:1px solid #2b3357!important;
-  border-radius:6px;
-  padding:4px 6px;
-}
-
-/* checkbox label */
-.form-check-label{
-  color:#ffffff !important;
-}
 /* ===============================
    WEAPON ICONS
 ================================ */
@@ -141,9 +176,8 @@ input{
 .weapon-icon{
   width:48px;
   height:48px;
-  opacity:.3;
+  opacity:.25;
   transition:.2s;
-  cursor:pointer;
 }
 
 .weapon-icon.active{
@@ -151,6 +185,15 @@ input{
   filter:drop-shadow(0 0 6px rgba(255,200,120,.7));
 }
 
-.weapon-icon:hover{
+.weapon-icon.clickable{
+  cursor:pointer;
+}
+
+.weapon-icon.clickable:hover{
   transform:scale(1.12);
+  opacity:1;
+}
+
+.weapon-icon.disabled{
+  opacity:.15;
 }

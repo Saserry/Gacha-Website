@@ -11,8 +11,8 @@
 }
 
 .chain-icon{
-  width: 60px;       /* grootte van de icons */
-  height:60px;
+  width: 63px;       /* grootte van de icons */
+  height:63px;
   opacity:.25;
   transition:.2s;
   flex:1;
