@@ -1,0 +1,42 @@
+/* ===============================
+   RESONANCE ICONS STYLING
+================================ */
+
+.chain-icons{
+  display:flex;
+  justify-content:space-between;
+  width:160px;      /* zelfde als character image */
+  margin-top:14px;
+  gap:6px;
+}
+
+.chain-icon{
+  width: 63px;       /* grootte van de icons */
+  height:63px;
+  opacity:.25;
+  transition:.2s;
+  flex:1;
+  object-fit:contain;
+}
+
+/* actief */
+.chain-icon.active{
+  opacity:1;
+  filter:drop-shadow(0 0 6px rgba(255,200,120,.6));
+}
+
+/* klikbaar */
+.chain-icon.clickable{
+  cursor:pointer;
+}
+
+.chain-icon.clickable:hover{
+  transform:scale(1.15);
+  opacity:1;
+}
+
+/* uitgeschakeld */
+.chain-icon.disabled{
+  opacity:.15;
+  cursor:not-allowed;
+}
