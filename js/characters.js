@@ -14,7 +14,7 @@ const CHARACTERS = [
       "assets/wuwa/resonance/aalto/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)       
+      "assets/wuwa/weapon/icons/pistol.jpg",      // base type (altijd aan)       
     ]
   },
   {
@@ -51,26 +51,26 @@ const CHARACTERS = [
       "assets/wuwa/resonance/augusta/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
+      "assets/wuwa/weapon/icons/broadblade.jpg",      // base type (altijd aan)
       "assets/wuwa/weapon/augusta.jpg"          // extra toggle (klikbaar)
     ]
   },
   {
-    id:"baishi",
-    name:"Baishi",
+    id:"baizhi",
+    name:"Baizhi",
     rarity:"4★",
     standard:false, //komt in Standard tab
-    image:"assets/wuwa/icons/baishi.jpg",
+    image:"assets/wuwa/icons/baizhi.jpg",
     icons:[
-      "assets/wuwa/resonance/baishi/1.jpg",
-      "assets/wuwa/resonance/baishi/2.jpg",
-      "assets/wuwa/resonance/baishi/3.jpg",
-      "assets/wuwa/resonance/baishi/4.jpg",
-      "assets/wuwa/resonance/baishi/5.jpg",
-      "assets/wuwa/resonance/baishi/6.jpg"
+      "assets/wuwa/resonance/baizhi/1.jpg",
+      "assets/wuwa/resonance/baizhi/2.jpg",
+      "assets/wuwa/resonance/baizhi/3.jpg",
+      "assets/wuwa/resonance/baizhi/4.jpg",
+      "assets/wuwa/resonance/baizhi/5.jpg",
+      "assets/wuwa/resonance/baizhi/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
+      "assets/wuwa/weapon/icons/rectifier.jpg",      // base type (altijd aan)
     ]
   },
   {
@@ -107,7 +107,7 @@ const CHARACTERS = [
       "assets/wuwa/resonance/buling/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
+      "assets/wuwa/weapon/icons/rectifier.jpg",      // base type (altijd aan)
     ]
   },
   {
@@ -125,7 +125,7 @@ const CHARACTERS = [
       "assets/wuwa/resonance/calcharo/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
+      "assets/wuwa/weapon/icons/broadblade.jpg",      // base type (altijd aan)
     ]
   },
   {
@@ -162,7 +162,7 @@ const CHARACTERS = [
       "assets/wuwa/resonance/cantarella/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
+      "assets/wuwa/weapon/icons/rectifier.jpg",      // base type (altijd aan)
       "assets/wuwa/weapon/cantarella.jpg"          // extra toggle (klikbaar)
     ]
   },
@@ -181,7 +181,7 @@ const CHARACTERS = [
       "assets/wuwa/resonance/carlotta/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
+      "assets/wuwa/weapon/icons/pistol.jpg",      // base type (altijd aan)
       "assets/wuwa/weapon/carlotta.jpg"          // extra toggle (klikbaar)
     ]
   },
@@ -238,7 +238,7 @@ const CHARACTERS = [
       "assets/wuwa/resonance/chisa/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
+      "assets/wuwa/weapon/icons/broadblade.jpg",      // base type (altijd aan)
       "assets/wuwa/weapon/chisa.jpg"          // extra toggle (klikbaar)
     ]
   },
@@ -257,7 +257,7 @@ const CHARACTERS = [
       "assets/wuwa/resonance/chixia/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
+      "assets/wuwa/weapon/icons/pistol.jpg",      // base type (altijd aan)
     ]
   },
   {
@@ -275,23 +275,23 @@ const CHARACTERS = [
       "assets/wuwa/resonance/ciaccona/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
+      "assets/wuwa/weapon/icons/pistol.jpg",      // base type (altijd aan)
       "assets/wuwa/weapon/ciaccona.jpg"          // extra toggle (klikbaar)
     ]
   },
   {
-    id:"danji",
-    name:"Danji",
+    id:"danjin",
+    name:"Danjin",
     rarity:"4★",
     standard:false, //komt in Standard tab
-    image:"assets/wuwa/icons/danji.jpg",
+    image:"assets/wuwa/icons/danjin.jpg",
     icons:[
-      "assets/wuwa/resonance/danji/1.jpg",
-      "assets/wuwa/resonance/danji/2.jpg",
-      "assets/wuwa/resonance/danji/3.jpg",
-      "assets/wuwa/resonance/danji/4.jpg",
-      "assets/wuwa/resonance/danji/5.jpg",
-      "assets/wuwa/resonance/danji/6.jpg"
+      "assets/wuwa/resonance/danjin/1.jpg",
+      "assets/wuwa/resonance/danjin/2.jpg",
+      "assets/wuwa/resonance/danjin/3.jpg",
+      "assets/wuwa/resonance/danjin/4.jpg",
+      "assets/wuwa/resonance/danjin/5.jpg",
+      "assets/wuwa/resonance/danjin/6.jpg"
     ],
     weapons:[
       "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
@@ -312,7 +312,7 @@ const CHARACTERS = [
       "assets/wuwa/resonance/encore/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
+      "assets/wuwa/weapon/icons/rectifier.jpg",      // base type (altijd aan)
     ]
   },
   {
@@ -330,7 +330,7 @@ const CHARACTERS = [
       "assets/wuwa/resonance/galbrena/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
+      "assets/wuwa/weapon/icons/pistol.jpg",      // base type (altijd aan)
       "assets/wuwa/weapon/galbrena.jpg"          // extra toggle (klikbaar)
     ]
   },
@@ -349,7 +349,7 @@ const CHARACTERS = [
       "assets/wuwa/resonance/iuno/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
+      "assets/wuwa/weapon/icons/gauntlet.jpg",      // base type (altijd aan)
       "assets/wuwa/weapon/iuno.jpg"          // extra toggle (klikbaar)
     ]
   },
@@ -357,7 +357,7 @@ const CHARACTERS = [
     id:"jianxin",
     name:"Jianxin",
     rarity:"5★",
-    standard:false, //komt in Standard tab
+    standard:true, //komt in Standard tab
     image:"assets/wuwa/icons/jianxin.jpg",
     icons:[
       "assets/wuwa/resonance/jianxin/1.jpg",
@@ -368,7 +368,7 @@ const CHARACTERS = [
       "assets/wuwa/resonance/jianxin/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
+      "assets/wuwa/weapon/icons/gauntlet.jpg",      // base type (altijd aan)
     ]
   },
   {
@@ -386,7 +386,7 @@ const CHARACTERS = [
       "assets/wuwa/resonance/jinhsi/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
+      "assets/wuwa/weapon/icons/broadblade.jpg",      // base type (altijd aan)
       "assets/wuwa/weapon/jinhsi.jpg"          // extra toggle (klikbaar)
     ]
   },
@@ -405,7 +405,7 @@ const CHARACTERS = [
       "assets/wuwa/resonance/jiyan/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
+      "assets/wuwa/weapon/icons/broadblade.jpg",      // base type (altijd aan)
       "assets/wuwa/weapon/jiyan.jpg"          // extra toggle (klikbaar)
     ]
   },
@@ -424,7 +424,7 @@ const CHARACTERS = [
       "assets/wuwa/resonance/lingyang/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
+      "assets/wuwa/weapon/icons/gauntlet.jpg",      // base type (altijd aan)
     ]
   },
   {
@@ -442,7 +442,7 @@ const CHARACTERS = [
       "assets/wuwa/resonance/lumi/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
+      "assets/wuwa/weapon/icons/broadblade.jpg",      // base type (altijd aan)
     ]
   },
   {
@@ -460,7 +460,7 @@ const CHARACTERS = [
       "assets/wuwa/resonance/lupa/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
+      "assets/wuwa/weapon/icons/broadblade.jpg",      // base type (altijd aan)
       "assets/wuwa/weapon/lupa.jpg"          // extra toggle (klikbaar)
     ]
   },
@@ -498,7 +498,7 @@ const CHARACTERS = [
       "assets/wuwa/resonance/lynae/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
+      "assets/wuwa/weapon/icons/pistol.jpg",      // base type (altijd aan)
       "assets/wuwa/weapon/lynae.jpg"          // extra toggle (klikbaar)
     ]
   },
@@ -517,7 +517,7 @@ const CHARACTERS = [
       "assets/wuwa/resonance/mornye/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
+      "assets/wuwa/weapon/icons/broadblade.jpg",      // base type (altijd aan)
       "assets/wuwa/weapon/mornye.jpg"          // extra toggle (klikbaar)
     ]
   },
@@ -536,7 +536,7 @@ const CHARACTERS = [
       "assets/wuwa/resonance/mortefi/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
+      "assets/wuwa/weapon/icons/pistol.jpg",      // base type (altijd aan)
     ]
   },
   {
@@ -554,7 +554,7 @@ const CHARACTERS = [
       "assets/wuwa/resonance/phoebe/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
+      "assets/wuwa/weapon/icons/rectifier.jpg",      // base type (altijd aan)
       "assets/wuwa/weapon/phoebe.jpg"          // extra toggle (klikbaar)
     ]
   },
@@ -573,7 +573,7 @@ const CHARACTERS = [
       "assets/wuwa/resonance/phrolova/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
+      "assets/wuwa/weapon/icons/rectifier.jpg",      // base type (altijd aan)
       "assets/wuwa/weapon/phrolova.jpg"          // extra toggle (klikbaar)
     ]
   },
@@ -611,7 +611,7 @@ const CHARACTERS = [
       "assets/wuwa/resonance/roccia/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
+      "assets/wuwa/weapon/icons/gauntlet.jpg",      // base type (altijd aan)
       "assets/wuwa/weapon/roccia.jpg"          // extra toggle (klikbaar)
     ]
   },
@@ -648,7 +648,7 @@ const CHARACTERS = [
       "assets/wuwa/resonance/shorekeeper/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
+      "assets/wuwa/weapon/icons/rectifier.jpg",      // base type (altijd aan)
       "assets/wuwa/weapon/shorekeeper.jpg"          // extra toggle (klikbaar)
     ]
   },
@@ -667,7 +667,7 @@ const CHARACTERS = [
       "assets/wuwa/resonance/taoqi/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
+      "assets/wuwa/weapon/icons/broadblade.jpg",      // base type (altijd aan)
     ]
   },
   {
@@ -685,7 +685,7 @@ const CHARACTERS = [
       "assets/wuwa/resonance/verina/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
+      "assets/wuwa/weapon/icons/rectifier.jpg",      // base type (altijd aan)
     ]
   },
   {
@@ -703,7 +703,7 @@ const CHARACTERS = [
       "assets/wuwa/resonance/xiangli-yao/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
+      "assets/wuwa/weapon/icons/gauntlet.jpg",      // base type (altijd aan)
       "assets/wuwa/weapon/xiangli-yao.jpg"          // extra toggle (klikbaar)
     ]
   },
@@ -740,7 +740,7 @@ const CHARACTERS = [
       "assets/wuwa/resonance/yinlin/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
+      "assets/wuwa/weapon/icons/rectifier.jpg",      // base type (altijd aan)
       "assets/wuwa/weapon/yinlin.jpg"          // extra toggle (klikbaar)
     ]
   },
@@ -759,7 +759,7 @@ const CHARACTERS = [
       "assets/wuwa/resonance/youhu/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
+      "assets/wuwa/weapon/icons/gauntlet.jpg",      // base type (altijd aan)
     ]
   },
   {
@@ -777,7 +777,7 @@ const CHARACTERS = [
       "assets/wuwa/resonance/yuanwu/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
+      "assets/wuwa/weapon/icons/gauntlet.jpg",      // base type (altijd aan)
     ]
   },
   {
@@ -795,7 +795,7 @@ const CHARACTERS = [
       "assets/wuwa/resonance/zani/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
+      "assets/wuwa/weapon/icons/gauntlet.jpg",      // base type (altijd aan)
       "assets/wuwa/weapon/zani.jpg"          // extra toggle (klikbaar)
     ]
   },
@@ -814,7 +814,7 @@ const CHARACTERS = [
       "assets/wuwa/resonance/zhezhi/6.jpg"
     ],
     weapons:[
-      "assets/wuwa/weapon/icons/sword.jpg",      // base type (altijd aan)
+      "assets/wuwa/weapon/icons/rectifier.jpg",      // base type (altijd aan)
       "assets/wuwa/weapon/zhezhi.jpg"          // extra toggle (klikbaar)
     ]
   },
