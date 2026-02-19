@@ -1,177 +1,358 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Gacha Website</title>
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gacha Website</title>
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <style>
+    :root{
+      --bg: #f6f7fb;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --border: rgba(15, 23, 42, .10);
+      --shadow: 0 14px 30px rgba(15, 23, 42, .10);
+      --shadowHover: 0 18px 45px rgba(15, 23, 42, .18);
+      --radius: 18px;
+      --max: 1200px;
+      --accent: #2563eb;
+    }
 
-    <!-- Fonts & Icons -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
-      rel="stylesheet"
-    />
+    * { box-sizing: border-box; }
 
-    <!-- Bootstrap CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+    /* ✅ GEEN SCROLL */
+    html, body{
+      height: 100%;
+      overflow: hidden; /* disables scroll */
+    }
 
-    <style>
-      body {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-      }
+    body{
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column; /* header -> main -> footer */
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background: radial-gradient(900px 500px at 20% 0%, rgba(37,99,235,.10), transparent 60%),
+                  radial-gradient(900px 500px at 90% 10%, rgba(99,102,241,.10), transparent 55%),
+                  var(--bg);
+    }
 
-      .text-gradient {
-        background: linear-gradient(to right, #4e54c8, #8f94fb);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-    </style>
-  </head>
+    /* Header / Nav */
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: rgba(246,247,251,.75);
+      border-bottom: 1px solid var(--border);
+      flex: 0 0 auto;
+    }
+    .nav{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand{
+      font-weight: 800;
+      letter-spacing: .2px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .brand .dot{
+      width: 12px; height: 12px; border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), #7c3aed);
+      box-shadow: 0 0 0 6px rgba(37,99,235,.12);
+    }
 
-  <body class="d-flex flex-column h-100">
-    <main class="flex-shrink-0">
-      <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
-        <div class="container px-5">
-          <a class="navbar-brand fw-bold text-primary" href="#">Gacha Website</a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto fw-semibold small">
-              <li class="nav-item mx-3">
-                <a class="nav-link" href="wuthering_waves.html">Wuthering Waves</a>
-              </li>
-              <li class="nav-item mx-3">
-                <a class="nav-link" href="genshin.html">Genshin Impact</a>
-              </li>
-              <li class="nav-item mx-3">
-                <a class="nav-link" href="star_rail.html">Honkai Star Rail</a>
-              </li>
-              <li class="nav-item mx-3">
-                <a class="nav-link" href="zenless.html">Zenless</a>
-              </li>
-              <li class="nav-item mx-3">
-                <a class="nav-link" href="nikke.html">Nikke</a>
-              </li>
-               <li class="nav-item mx-3">
-                <a class="nav-link" href="endfield_arknight.html">Endfield: Arknight</a>
-              </li>
-            </ul>
-          </div>
-        </div>
+    nav ul{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    nav a{
+      text-decoration: none;
+      color: var(--muted);
+      padding: 10px 12px;
+      border-radius: 12px;
+      transition: background .2s ease, color .2s ease;
+    }
+    nav a:hover{
+      background: rgba(37,99,235,.10);
+      color: var(--text);
+    }
+
+    /* ✅ Main vult de rest van het scherm */
+    main{
+      flex: 1;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 20px 18px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* centreert inhoud */
+    }
+
+    .hero{
+      display: grid;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    h1{
+      margin: 0;
+      font-size: clamp(30px, 3.6vw, 44px);
+      letter-spacing: -0.8px;
+    }
+    .sub{
+      margin: 0;
+      color: var(--muted);
+      max-width: 70ch;
+      line-height: 1.5;
+    }
+
+    /* Cards grid */
+    .grid{
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(12, 1fr);
+      margin-top: 16px;
+    }
+
+    .card{
+      grid-column: span 4;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      color: inherit;
+      transform: translateY(0);
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      outline: none;
+      position: relative;
+      min-width: 0;
+    }
+    .card:hover{
+      transform: translateY(-4px);
+      box-shadow: var(--shadowHover);
+      border-color: rgba(37,99,235,.35);
+    }
+    .card:focus-visible{
+      box-shadow: 0 0 0 4px rgba(37,99,235,.25), var(--shadowHover);
+      border-color: rgba(37,99,235,.55);
+    }
+
+    .thumb{
+      height: 160px; /* iets lager zodat alles beter past zonder scroll */
+      background: #e5e7eb;
+      position: relative;
+    }
+    .thumb img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .pill{
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      background: rgba(15,23,42,.70);
+      color: #fff;
+      backdrop-filter: blur(6px);
+    }
+
+    .content{
+      padding: 14px 16px 16px;
+      display: grid;
+      gap: 8px;
+    }
+    .title{
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.2;
+      letter-spacing: -0.3px;
+    }
+    .desc{
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 14px;
+      min-height: 42px;
+    }
+
+    .cta{
+      margin-top: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 14px;
+    }
+    .cta span{
+      display: inline-block;
+      transition: transform .18s ease;
+    }
+    .card:hover .cta span{
+      transform: translateX(3px);
+    }
+
+    /* ✅ Footer blijft onder, zonder extra padding die scroll veroorzaakt */
+    footer{
+      flex: 0 0 auto;
+      max-width: var(--max);
+      margin: 0 auto;
+      width: 100%;
+      padding: 10px 18px 14px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1000px){
+      .card{ grid-column: span 6; }
+    }
+    @media (max-width: 620px){
+      nav ul{ display:none; } /* optioneel: verberg nav op mobiel */
+      .card{ grid-column: span 12; }
+      .thumb{ height: 180px; }
+      /* Op heel kleine schermen kan het alsnog krap worden zonder scroll */
+      .desc{ min-height: 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="nav">
+      <a class="brand" href="index.html">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Gacha Website</span>
+      </a>
+
+      <nav aria-label="Hoofdnavigatie">
+        <ul>
+          <li><a href="wuthering_waves.html">Wuthering Waves</a></li>
+          <li><a href="genshin.html">Genshin Impact</a></li>
+          <li><a href="star_rail.html">Honkai Star Rail</a></li>
+          <li><a href="zenless.html">Zenless</a></li>
+          <li><a href="nikke.html">Nikke</a></li>
+          <li><a href="endfield_arknight.html">Endfield</a></li>
+        </ul>
       </nav>
+    </div>
+  </header>
 
-      <!-- Projects Section -->
-      <section class="py-5">
-        <div class="container px-5 mb-5">
-          <div class="text-center mb-5">
-            <h1 class="display-5 fw-bolder mb-0">Projects</h1>
-          </div>
+  <main>
+    <section class="hero">
+      <h1>Projects</h1>
+      <p class="sub">Kies een game om je gacha-tracker te openen. Klik op een kaart om naar de juiste pagina te gaan.</p>
+    </section>
 
-          <!-- PROJECTS GRID -->
-          <div class="row gx-4 gy-4">
-
-            <!-- Project 1 -->
-            <div class="col-6 col-lg-4">
-              <div class="card h-100 shadow rounded-4 border-0">
-                <img src="assets/wuwa/1.jpg" class="card-img-top" alt="Wuthering Waves">
-                <div class="p-4">
-                  <h2 class="fw-bolder">Wuthering Waves</h2>
-                  <div class="mb-2">
-                  </div>
-                  <p>Een gacha-tracker voor Wuthering Waves.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Project 2 -->
-            <div class="col-6 col-lg-4">
-              <div class="card h-100 shadow rounded-4 border-0">
-                <img src="assets/nikke/1.jpg" class="card-img-top" alt="Nikke">
-                <div class="p-4">
-                  <h2 class="fw-bolder">Goddess of Victory: Nikke</h2>
-                  <div class="mb-2">
-                  </div>
-                  <p>Een gacha-tracker voor Goddess of Victory: Nikke.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Project 3 -->
-            <div class="col-6 col-lg-4">
-              <div class="card h-100 shadow rounded-4 border-0">
-                <img src="assets/hsr/1.jpg" class="card-img-top" alt="Honkai Star Rail">
-                <div class="p-4">
-                  <h2 class="fw-bolder">Honkai: Star Rail</h2>
-                  <div class="mb-2">
-                  </div>
-                  <p>Een gacha-tracker voor Honkai Star Rail.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Project 4 -->
-            <div class="col-6 col-lg-4">
-              <div class="card h-100 shadow rounded-4 border-0">
-                <img src="assets/genshin/1.jpg" class="card-img-top" alt="Genshin Impact">
-                <div class="p-4">
-                  <h2 class="fw-bolder">Genshin Impact</h2>
-                  <div class="mb-2">
-                  </div>
-                  <p>Een gacha-tracker voor Genshin Impact.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Project 5 -->
-            <div class="col-6 col-lg-4">
-              <div class="card h-100 shadow rounded-4 border-0">
-                <img src="assets/zzz/1.jpg" class="card-img-top" alt="Zenless Zone Zero">
-                <div class="p-4">
-                  <h2 class="fw-bolder">Zenless Zone Zero</h2>
-                  <div class="mb-2">
-                  </div>
-                  <p>Een gacha-tracker voor Zenless Zone Zero.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Project 6 (optioneel leeg / future) -->
-            <div class="col-6 col-lg-4">
-              <div class="card h-100 shadow rounded-4 border-0">
-                <img src="assets/arknight/1.jpg" class="card-img-top" alt="Endfield: Arknight">
-                <div class="p-4">
-                  <h2 class="fw-bolder">Endfield: Arknight</h2>
-                  <div class="mb-2">
-                  </div>
-                  <p>Een gacha-tracker voor Endfield: Arknight.</p>
-                </div>
-              </div>
-            </div>
-
-          </div>
+    <section class="grid" aria-label="Projecten">
+      <!-- Kaart 1 -->
+      <a class="card" href="wuthering_waves.html">
+        <div class="thumb">
+          <img src="assets/wuwa/1.jpg" alt="Wuthering Waves banner">
+          <div class="pill">Tracker</div>
         </div>
-      </section>
-    </main>
+        <div class="content">
+          <h2 class="title">Wuthering Waves</h2>
+          <p class="desc">Een gacha-tracker voor Wuthering Waves.</p>
+          <div class="cta">Open <span>→</span></div>
+        </div>
+      </a>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
+      <!-- Kaart 2 -->
+      <a class="card" href="nikke.html">
+        <div class="thumb">
+          <img src="assets/nikke/1.jpg" alt="Goddess of Victory: Nikke banner">
+          <div class="pill">Tracker</div>
+        </div>
+        <div class="content">
+          <h2 class="title">Goddess of Victory: Nikke</h2>
+          <p class="desc">Een gacha-tracker voor Goddess of Victory: Nikke.</p>
+          <div class="cta">Open <span>→</span></div>
+        </div>
+      </a>
+
+      <!-- Kaart 3 -->
+      <a class="card" href="star_rail.html">
+        <div class="thumb">
+          <img src="assets/hsr/1.jpg" alt="Honkai: Star Rail banner">
+          <div class="pill">Tracker</div>
+        </div>
+        <div class="content">
+          <h2 class="title">Honkai: Star Rail</h2>
+          <p class="desc">Een gacha-tracker voor Honkai Star Rail.</p>
+          <div class="cta">Open <span>→</span></div>
+        </div>
+      </a>
+
+      <!-- Extra kaarten -->
+      <a class="card" href="genshin.html">
+        <div class="thumb">
+          <img src="assets/genshin/1.jpg" alt="Genshin Impact banner">
+          <div class="pill">Tracker</div>
+        </div>
+        <div class="content">
+          <h2 class="title">Genshin Impact</h2>
+          <p class="desc">Een gacha-tracker voor Genshin Impact.</p>
+          <div class="cta">Open <span>→</span></div>
+        </div>
+      </a>
+
+      <a class="card" href="zenless.html">
+        <div class="thumb">
+          <img src="assets/zzz/1.jpg" alt="Zenless Zone Zero banner">
+          <div class="pill">Tracker</div>
+        </div>
+        <div class="content">
+          <h2 class="title">Zenless</h2>
+          <p class="desc">Een gacha-tracker voor Zenless Zone Zero.</p>
+          <div class="cta">Open <span>→</span></div>
+        </div>
+      </a>
+
+      <a class="card" href="endfield_arknight.html">
+        <div class="thumb">
+          <img src="assets/arknight/1.jpg" alt="Endfield banner">
+          <div class="pill">Tracker</div>
+        </div>
+        <div class="content">
+          <h2 class="title">Endfield: Arknight</h2>
+          <p class="desc">Een gacha-tracker voor Endfield.</p>
+          <div class="cta">Open <span>→</span></div>
+        </div>
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Gacha Website • Gemaakt met HTML/CSS
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
 </html>
