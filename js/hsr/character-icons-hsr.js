@@ -1,4 +1,4 @@
-const RESONANCE_BASE = "assets/wuwa/resonance";
+const RESONANCE_BASE = "assets/hsr/resonance";
 const PLACEHOLDER_ICON = `${RESONANCE_BASE}/placeholder.png`;
 
 /**

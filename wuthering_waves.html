@@ -4,11 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Wuthering Waves – Character Tracker</title>
+
   <link rel="stylesheet" href="css/wuwa/style.css">
 </head>
 
 <body>
-  <main class="container">
+  <div class="container">
     <h1 class="page-title">Wuthering Waves – Character Tracker</h1>
     <p class="page-subtitle">Resonance icons en weapon toggle werken alleen als Owned aan staat.</p>
 
@@ -21,8 +22,8 @@
       <button class="tab-btn" data-tab="notowned">Not Owned</button>
     </div>
 
-    <div id="list" class="grid"></div>
-  </main>
+    <div id="list" class="grid" aria-label="Character kaarten"></div>
+  </div>
 
   <script src="js/wuwa/characters.js"></script>
 
@@ -44,10 +45,13 @@
     function load(){
       const s = localStorage.getItem(KEY);
       const d = s ? JSON.parse(s) : {};
-      CHARACTERS.forEach(c=>{ if(!d[c.id]) d[c.id] = defaultChar(); });
+      CHARACTERS.forEach(c=>{
+        if(!d[c.id]) d[c.id] = defaultChar();
+      });
       localStorage.setItem(KEY, JSON.stringify(d));
       return d;
     }
+
     function save(d){ localStorage.setItem(KEY, JSON.stringify(d)); }
 
     function clamp(v,min,max){
@@ -81,78 +85,81 @@
 
         const hasWeapons = Array.isArray(c.weapons) && c.weapons.length >= 1;
 
-        const el = document.createElement("div");
-        el.className = "card-wrap";
+        const card = document.createElement("div");
+        card.className = `tracker-card ${owned ? "is-owned" : "not-owned"}`;
 
-        el.innerHTML = `
-          <div class="tracker-card ${owned ? "is-owned" : ""}">
+        card.innerHTML = `
+          <div class="card-top">
+            <img src="${c.image}" class="char-img ${owned ? "" : "dim"}" alt="${c.name}" onerror="this.style.display='none'">
 
-            <div class="card-top">
-              <img src="${c.image}" class="char-img ${owned ? "" : "dim"}" onerror="this.style.display='none'">
-
-              <div class="right">
-                <div class="header-row">
-                  <div class="title-area">
-                    <div class="char-name">${c.name}</div>
-                    <div class="meta">
-                      <span class="pill">${c.rarity}</span>
-                      ${c.standard ? `<span class="pill pill-standard">Standard</span>` : ``}
-                    </div>
+            <div class="right">
+              <div class="header-row">
+                <div>
+                  <div class="char-name">${c.name}</div>
+                  <div class="meta">
+                    <span class="pill">${c.rarity}</span>
+                    ${c.standard ? `<span class="pill pill-standard">Standard</span>` : ``}
                   </div>
-
-                  <label class="owned-inline">
-                    <input type="checkbox" ${owned ? "checked" : ""} onchange="setOwned('${c.id}', this.checked)">
-                    <span>Owned</span>
-                  </label>
                 </div>
 
-                <div class="mini-row">
-                  <div class="mini-box level-box">
-                    <span class="mini-label">Level</span>
-                    <input class="mini-input" value="${d.level}" oninput="setLevel('${c.id}', this.value)">
-                  </div>
-
-                  ${hasWeapons ? `
-                    <div class="mini-box weapon-box">
-                      <img src="${c.weapons[0]}" class="weapon-icon base" onerror="this.style.display='none'">
-                      ${c.weapons[1] ? `
-                        <img
-                          src="${c.weapons[1]}"
-                          class="weapon-icon extra ${owned ? "clickable" : "disabled"} ${d.weaponExtra ? "active" : ""}"
-                          ${owned ? `onclick="toggleWeaponExtra('${c.id}')"` : ``}
-                          onerror="this.style.display='none'">
-                      ` : ``}
-                    </div>
-                  ` : `<div class="mini-box weapon-box empty"></div>`}
-                </div>
+                <label class="owned-inline">
+                  <input type="checkbox" ${owned ? "checked" : ""} onchange="setOwned('${c.id}', this.checked)">
+                  <span>Owned</span>
+                </label>
               </div>
 
-              <!-- ✅ chain pill staat NU onder de hele top (onder profiel + info) -->
-              <div class="chain-pill">
-                ${c.icons.map((icon,i)=>`
-                  <img
-                    src="${icon}"
-                    class="chain-icon ${d.chain>=i+1 ? "active" : ""} ${owned ? "clickable" : "disabled"}"
-                    ${owned ? `onclick="setChain('${c.id}',${i+1})"` : ""}
-                    onerror="iconError(this)">
-                `).join("")}
+              <!-- ✅ WEAPONS: groter + gecentreerd -->
+              <div class="mini-row">
+                <div class="mini-box weapon-box ${hasWeapons ? "" : "empty"}">
+                  ${hasWeapons ? `
+                    <img src="${c.weapons[0]}" class="weapon-icon base" title="Weapon type" onerror="this.style.display='none'">
+                    ${c.weapons[1] ? `
+                      <img
+                        src="${c.weapons[1]}"
+                        class="weapon-icon extra ${owned ? "clickable" : "disabled"} ${d.weaponExtra ? "active" : ""}"
+                        title="Extra weapon (toggle)"
+                        ${owned ? `onclick="toggleWeaponExtra('${c.id}')"` : ``}
+                        onerror="this.style.display='none'">
+                    ` : ``}
+                  ` : ``}
+                </div>
               </div>
             </div>
 
-            <div class="divider"></div>
-
-            <div class="skills">
-              ${Object.entries(d.skills).map(([k,v])=>`
-                <div class="skill-row">
-                  <span class="skill-name">${k}</span>
-                  <input class="skill-input" value="${v}" oninput="setSkill('${c.id}','${k}', this.value)">
-                </div>
+            <!-- resonance -->
+            <div class="chain-pill">
+              ${c.icons.map((icon,i)=>`
+                <img
+                  src="${icon}"
+                  class="chain-icon ${d.chain>=i+1 ? "active" : ""} ${owned ? "clickable" : "disabled"}"
+                  ${owned ? `onclick="setChain('${c.id}',${i+1})"` : "" }
+                  onerror="iconError(this)"
+                  alt="Resonance ${i+1}">
               `).join("")}
             </div>
+
+            <!-- level -->
+            <div class="level-under">
+              <div class="mini-box level-box">
+                <span class="mini-label">Level</span>
+                <input class="mini-input" value="${d.level}" oninput="setLevel('${c.id}', this.value)">
+              </div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="skills">
+            ${Object.entries(d.skills).map(([k,v])=>`
+              <div class="skill-row">
+                <span class="skill-name">${k}</span>
+                <input class="skill-input" value="${v}" oninput="setSkill('${c.id}','${k}', this.value)">
+              </div>
+            `).join("")}
           </div>
         `;
 
-        list.appendChild(el);
+        list.appendChild(card);
       });
     }
 
