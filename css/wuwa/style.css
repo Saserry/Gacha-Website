@@ -117,12 +117,30 @@ body{
   height:80px;
   object-fit:cover;
   border-radius:14px;
-  border:1.5px solid rgba(122,162,255,.25);
+  border:10px solid rgba(122,162,255,.40);
   background:linear-gradient(135deg, rgba(122,162,255,.08), rgba(255,255,255,.02));
   box-shadow:
     0 18px 40px rgba(0,0,0,.35),
     inset 0 1px 0 rgba(255,255,255,.08);
   transition:transform .20s ease, box-shadow .20s ease, border-color .20s ease;
+}
+
+.tracker-card.rarity-5star .char-img{
+  border-color:rgba(255,204,102,1);
+  box-shadow:
+    0 18px 40px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.08),
+    0 0 24px rgba(255,204,102,.50),
+    0 0 40px rgba(255,204,102,.25);
+}
+
+.tracker-card.rarity-4star .char-img{
+  border-color:rgba(168,85,247,1);
+  box-shadow:
+    0 18px 40px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.08),
+    0 0 24px rgba(168,85,247,.45),
+    0 0 40px rgba(168,85,247,.20);
 }
 
 .row-col{ display:flex; align-items:center; justify-content:flex-start; }

@@ -86,7 +86,7 @@
         const hasWeapons = Array.isArray(c.weapons) && c.weapons.length >= 1;
 
         const card = document.createElement("div");
-        card.className = `tracker-card ${owned ? "is-owned" : "not-owned"}`;
+        card.className = `tracker-card ${owned ? "is-owned" : "not-owned"} rarity-${c.rarity.replace("★", "star")}`;
 
         card.innerHTML = `
           <div class="row-main">
