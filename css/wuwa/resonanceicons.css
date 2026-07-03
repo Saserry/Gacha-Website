@@ -5,14 +5,14 @@
 .chain-icons{
   display:flex;
   justify-content:space-between;
-  width:160px;      /* zelfde als character image */
+  width:200px;      /* zelfde als character image */
   margin-top:14px;
   gap:6px;
 }
 
 .chain-icon{
-  width: 63px;       /* grootte van de icons */
-  height:63px;
+  width: 85px;       /* grootte van de icons */
+  height:85px;
   opacity:.25;
   transition:.2s;
   flex:1;

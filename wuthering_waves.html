@@ -89,45 +89,39 @@
         card.className = `tracker-card ${owned ? "is-owned" : "not-owned"}`;
 
         card.innerHTML = `
-          <div class="card-top">
-            <img src="${c.image}" class="char-img ${owned ? "" : "dim"}" alt="${c.name}" onerror="this.style.display='none'">
-
-            <div class="right">
-              <div class="header-row">
-                <div>
-                  <div class="char-name">${c.name}</div>
-                  <div class="meta">
-                    <span class="pill">${c.rarity}</span>
-                    ${c.standard ? `<span class="pill pill-standard">Standard</span>` : ``}
-                  </div>
+          <div class="row-main">
+            <div class="row-char">
+              <img src="${c.image}" class="char-img ${owned ? "" : "dim"}" alt="${c.name}" onerror="this.style.display='none'">
+              <div class="char-text">
+                <div class="meta meta-top">
+                  <span class="pill">${c.rarity}</span>
+                  ${c.standard ? `<span class="pill pill-standard">Standard</span>` : ``}
                 </div>
-
-                <label class="owned-inline">
+                <div class="char-name">${c.name}</div>
+                <label class="owned-inline owned-under-name">
                   <input type="checkbox" ${owned ? "checked" : ""} onchange="setOwned('${c.id}', this.checked)">
                   <span>Owned</span>
                 </label>
               </div>
+            </div>
 
-              <!-- ✅ WEAPONS: groter + gecentreerd -->
-              <div class="mini-row">
-                <div class="mini-box weapon-box ${hasWeapons ? "" : "empty"}">
-                  ${hasWeapons ? `
-                    <img src="${c.weapons[0]}" class="weapon-icon base" title="Weapon type" onerror="this.style.display='none'">
-                    ${c.weapons[1] ? `
-                      <img
-                        src="${c.weapons[1]}"
-                        class="weapon-icon extra ${owned ? "clickable" : "disabled"} ${d.weaponExtra ? "active" : ""}"
-                        title="Extra weapon (toggle)"
-                        ${owned ? `onclick="toggleWeaponExtra('${c.id}')"` : ``}
-                        onerror="this.style.display='none'">
-                    ` : ``}
+            <div class="row-col row-weapons">
+              <div class="mini-box weapon-box ${hasWeapons ? "" : "empty"}">
+                ${hasWeapons ? `
+                  <img src="${c.weapons[0]}" class="weapon-icon base" title="Weapon type" onerror="this.style.display='none'">
+                  ${c.weapons[1] ? `
+                    <img
+                      src="${c.weapons[1]}"
+                      class="weapon-icon extra ${owned ? "clickable" : "disabled"} ${d.weaponExtra ? "active" : ""}"
+                      title="Extra weapon (toggle)"
+                      ${owned ? `onclick="toggleWeaponExtra('${c.id}')"` : ``}
+                      onerror="this.style.display='none'">
                   ` : ``}
-                </div>
+                ` : `<span class="weapon-empty">No weapon</span>`}
               </div>
             </div>
 
-            <!-- resonance -->
-            <div class="chain-pill">
+            <div class="row-col row-resonance">
               ${c.icons.map((icon,i)=>`
                 <img
                   src="${icon}"
@@ -138,13 +132,6 @@
               `).join("")}
             </div>
 
-            <!-- level -->
-            <div class="level-under">
-              <div class="mini-box level-box">
-                <span class="mini-label">Level</span>
-                <input class="mini-input" value="${d.level}" oninput="setLevel('${c.id}', this.value)">
-              </div>
-            </div>
           </div>
 
           <div class="divider"></div>
