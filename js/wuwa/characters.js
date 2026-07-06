@@ -1,5 +1,5 @@
 const CHARACTERS = [
-  {
+  { // Aalto
     id:"aalto",
     name:"Aalto",
     rarity:"4★",
@@ -17,7 +17,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/icons/pistol.png",      // base type (altijd aan)       
     ]
   },
-  {
+  { // Aemeath
     id:"aemeath",
     name:"Aemeath",
     rarity:"5★",
@@ -36,7 +36,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/aemeath.png"          // extra toggle (klikbaar)
     ]
   },
-  {
+  { // Augusta
     id:"augusta",
     name:"Augusta",
     rarity:"5★",
@@ -55,7 +55,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/augusta.png"          // extra toggle (klikbaar)
     ]
   },
-  {
+  { // Baizhi
     id:"baizhi",
     name:"Baizhi",
     rarity:"4★",
@@ -73,7 +73,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/icons/rectifier.png",      // base type (altijd aan)
     ]
   },
-  {
+  { // Brant
     id:"brant",
     name:"Brant",
     rarity:"5★",
@@ -92,7 +92,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/brant.png"          // extra toggle (klikbaar)
     ]
   },
-  {
+  { // Buling
     id:"buling",
     name:"Buling",
     rarity:"4★",
@@ -110,7 +110,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/icons/rectifier.png",      // base type (altijd aan)
     ]
   },
-  {
+  { // Calcharo
     id:"calcharo",
     name:"Calcharo",
     rarity:"5★",
@@ -128,7 +128,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/icons/broadblade.png",      // base type (altijd aan)
     ]
   },
-  {
+  { // Camellya
     id:"camellya",
     name:"Camellya",
     rarity:"5★",
@@ -147,7 +147,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/camellya.png"          // extra toggle (klikbaar)
     ]
   },
-  {
+  { // Cantarella
     id:"cantarella",
     name:"Cantarella",
     rarity:"5★",
@@ -166,7 +166,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/cantarella.png"          // extra toggle (klikbaar)
     ]
   },
-  {
+  { // Carlotta
     id:"carlotta",
     name:"Carlotta",
     rarity:"5★",
@@ -185,7 +185,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/carlotta.png"          // extra toggle (klikbaar)
     ]
   },
-  {
+  { // Cartethyia
     id:"cartethyia",
     name:"Cartethyia",
     rarity:"5★",
@@ -204,7 +204,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/cartethyia.png"          // extra toggle (klikbaar)
     ]
   },
-  {
+  { // Changli
     id:"changli",
     name:"Changli",
     rarity:"5★",
@@ -223,7 +223,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/changli.png"          // extra toggle (klikbaar)
     ]
   },
-  {
+  { // Chisa
     id:"chisa",
     name:"Chisa",
     rarity:"5★",
@@ -242,7 +242,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/chisa.png"          // extra toggle (klikbaar)
     ]
   },
-  {
+  { // Chixia
     id:"chixia",
     name:"Chixia",
     rarity:"4★",
@@ -260,7 +260,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/icons/pistol.png",      // base type (altijd aan)
     ]
   },
-  {
+  { // Ciaccona
     id:"ciaccona",
     name:"Ciaccona",
     rarity:"5★",
@@ -279,7 +279,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/ciaccona.png"          // extra toggle (klikbaar)
     ]
   },
-  {
+  { // Danjin
     id:"danjin",
     name:"Danjin",
     rarity:"4★",
@@ -297,7 +297,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/icons/sword.png",      // base type (altijd aan)
     ]
   },
-  {
+  { // Encore
     id:"encore",
     name:"Encore",
     rarity:"5★",
@@ -315,7 +315,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/icons/rectifier.png",      // base type (altijd aan)
     ]
   },
-  {
+  { // Galbrena
     id:"galbrena",
     name:"Galbrena",
     rarity:"5★",
@@ -334,7 +334,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/galbrena.png"          // extra toggle (klikbaar)
     ]
   },
-  {
+  { // Iuno
     id:"iuno",
     name:"Iuno",
     rarity:"5★",
@@ -353,7 +353,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/iuno.png"          // extra toggle (klikbaar)
     ]
   },
-  {
+  { // Jianxin
     id:"jianxin",
     name:"Jianxin",
     rarity:"5★",
@@ -371,7 +371,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/icons/gauntlet.png",      // base type (altijd aan)
     ]
   },
-  {
+  { // Jinhsi
     id:"jinhsi",
     name:"Jinhsi",
     rarity:"5★",
@@ -390,7 +390,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/jinhsi.png"          // extra toggle (klikbaar)
     ]
   },
-  {
+  { // Jiyan
     id:"jiyan",
     name:"Jiyan",
     rarity:"5★",
@@ -409,7 +409,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/jiyan.png"          // extra toggle (klikbaar)
     ]
   },
-  {
+  { // Lingyang
     id:"lingyang",
     name:"Lingyang",
     rarity:"5★",
@@ -427,7 +427,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/icons/gauntlet.png",      // base type (altijd aan)
     ]
   },
-  {
+  { // Lumi
     id:"lumi",
     name:"Lumi",
     rarity:"4★",
@@ -445,7 +445,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/icons/broadblade.png",      // base type (altijd aan)
     ]
   },
-  {
+  { // Lupa
     id:"lupa",
     name:"Lupa",
     rarity:"5★",
@@ -464,7 +464,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/lupa.png"          // extra toggle (klikbaar)
     ]
   },
-  {
+  { // Luuk Herssen
     id:"luuk herssen",
     name:"Luuk Herssen",
     rarity:"5★",
@@ -483,7 +483,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/luuk-herssen.png"          // extra toggle (klikbaar)
     ]
   },
-  {
+  { // Lynaë
     id:"lynae",
     name:"Lynaë",
     rarity:"5★",
@@ -502,7 +502,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/lynae.png"          // extra toggle (klikbaar)
     ]
   },
-  {
+  { // Mornye
     id:"mornye",
     name:"Mornye",
     rarity:"5★",
@@ -521,7 +521,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/mornye.png"          // extra toggle (klikbaar)
     ]
   },
-  {
+  { // Mortefi
     id:"mortefi",
     name:"Mortefi",
     rarity:"4★",
@@ -539,7 +539,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/icons/pistol.png",      // base type (altijd aan)
     ]
   },
-  {
+  { // Phoebe
     id:"phoebe",
     name:"Phoebe",
     rarity:"5★",
@@ -558,7 +558,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/phoebe.png"          // extra toggle (klikbaar)
     ]
   },
-  {
+  { // Phrolova
     id:"phrolova",
     name:"Phrolova",
     rarity:"5★",
@@ -577,7 +577,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/phrolova.png"          // extra toggle (klikbaar)
     ]
   },
-  {
+  { // Qiuyuan
     id:"qiuyuan",
     name:"Qiuyuan",
     rarity:"5★",
@@ -596,7 +596,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/qiuyuan.png"          // extra toggle (klikbaar)
     ]
   },
-  {
+  { // Roccia
     id:"roccia",
     name:"Roccia",
     rarity:"5★",
@@ -615,7 +615,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/roccia.png"          // extra toggle (klikbaar)
     ]
   },
-  {
+  { // Sanhua
     id:"sanhua",
     name:"Sanhua",
     rarity:"4★",
@@ -633,7 +633,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/icons/sword.png",      // base type (altijd aan)
     ]
   },
-  {
+  { // Shorekeeper
     id:"shorekeeper",
     name:"Shorekeeper",
     rarity:"5★",
@@ -652,7 +652,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/shorekeeper.png"          // extra toggle (klikbaar)
     ]
   },
-  {
+  { // Taoqi
     id:"taoqi",
     name:"Taoqi",
     rarity:"4★",
@@ -670,7 +670,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/icons/broadblade.png",      // base type (altijd aan)
     ]
   },
-  {
+  { // Verina
     id:"verina",
     name:"Verina",
     rarity:"5★",
@@ -688,7 +688,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/icons/rectifier.png",      // base type (altijd aan)
     ]
   },
-  {
+  { // Xiangli Yao
     id:"xiangli yao",
     name:"Xiangli Yao",
     rarity:"5★",
@@ -707,7 +707,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/xiangli-yao.png"          // extra toggle (klikbaar)
     ]
   },
-  {
+  { // Yangyang
     id:"yangyang",
     name:"Yangyang",
     rarity:"4★",
@@ -725,7 +725,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/icons/sword.png",      // base type (altijd aan)
     ]
   },
-  {
+  { // Yinlin
     id:"yinlin",
     name:"Yinlin",
     rarity:"5★",
@@ -744,7 +744,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/yinlin.png"          // extra toggle (klikbaar)
     ]
   },
-  {
+  { // Youhu
     id:"youhu",
     name:"Youhu",
     rarity:"4★",
@@ -762,7 +762,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/icons/gauntlet.png",      // base type (altijd aan)
     ]
   },
-  {
+  { // Yuanwu
     id:"yuanwu",
     name:"Yuanwu",
     rarity:"4★",
@@ -780,7 +780,7 @@ const CHARACTERS = [
       "assets/wuwa/weapon/icons/gauntlet.png",      // base type (altijd aan)
     ]
   },
-  {
+  { // Zani
     id:"zani",
     name:"Zani",
     rarity:"5★",
