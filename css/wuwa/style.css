@@ -640,3 +640,49 @@ body{
   .weapon-box{ padding:10px 10px; gap:10px; }
   .row-main{ gap:10px; }
 }
+
+/* Search */
+.search-input{
+  width:100%;
+  max-width:420px;
+  margin:0 0 14px 0;
+  padding:12px 14px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(18,26,51,.75);
+  color:#fff;
+  font-weight:800;
+  outline:none;
+}
+
+.search-input::placeholder{
+  color:rgba(255,255,255,.45);
+}
+
+.search-input:focus{
+  border-color:rgba(122,162,255,.65);
+  box-shadow:0 0 0 4px rgba(122,162,255,.14);
+}
+
+/* Collab tag */
+.pill-collab{
+  background:rgba(255,105,180,.12);
+  border-color:rgba(255,105,180,.45);
+  color:#ff9bd1;
+}
+
+/* Collab card glow */
+.tracker-card.is-collab{
+  border-color:rgba(255,105,180,.22);
+}
+
+.tracker-card.is-collab::after{
+  content:"COLLAB";
+  position:absolute;
+  top:12px;
+  right:14px;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.08em;
+  color:rgba(255,155,209,.75);
+}

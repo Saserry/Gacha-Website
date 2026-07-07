@@ -4,7 +4,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Wuthering Waves – Character Tracker</title>
-
   <link rel="stylesheet" href="css/wuwa/style.css">
 </head>
 
@@ -13,11 +12,20 @@
     <h1 class="page-title">Wuthering Waves – Character Tracker</h1>
     <p class="page-subtitle">Resonance icons en weapon toggle werken alleen als Owned aan staat.</p>
 
+    <input
+      id="searchInput"
+      class="search-input"
+      type="text"
+      placeholder="Zoek character..."
+      autocomplete="off"
+    >
+
     <div class="tabs" id="tabs">
       <button class="tab-btn active" data-tab="all">All</button>
       <button class="tab-btn" data-tab="five">5★</button>
       <button class="tab-btn" data-tab="four">4★</button>
       <button class="tab-btn" data-tab="standard">Standard</button>
+      <button class="tab-btn" data-tab="collab">Collab</button>
       <button class="tab-btn" data-tab="owned">Owned</button>
       <button class="tab-btn" data-tab="notowned">Not Owned</button>
     </div>
@@ -30,7 +38,9 @@
   <script>
     const KEY = "ww_tracker_final_v2";
     const PLACEHOLDER = "assets/wuwa/resonance/placeholder.jpg";
+
     let ACTIVE_TAB = "all";
+    let SEARCH_QUERY = "";
 
     function defaultChar(){
       return {
@@ -52,7 +62,9 @@
       return d;
     }
 
-    function save(d){ localStorage.setItem(KEY, JSON.stringify(d)); }
+    function save(d){
+      localStorage.setItem(KEY, JSON.stringify(d));
+    }
 
     function clamp(v,min,max){
       v = Number(v);
@@ -60,17 +72,32 @@
     }
 
     function iconError(img){
-      img.onerror=null;
-      img.src=PLACEHOLDER;
+      img.onerror = null;
+      img.src = PLACEHOLDER;
     }
 
     function passesTab(c, d){
       if(ACTIVE_TAB === "five" && c.rarity !== "5★") return false;
       if(ACTIVE_TAB === "four" && c.rarity !== "4★") return false;
       if(ACTIVE_TAB === "standard" && c.standard !== true) return false;
+      if(ACTIVE_TAB === "collab" && c.collab !== true) return false;
       if(ACTIVE_TAB === "owned" && d.owned !== true) return false;
       if(ACTIVE_TAB === "notowned" && d.owned !== false) return false;
       return true;
+    }
+
+    function passesSearch(c){
+      if(!SEARCH_QUERY) return true;
+
+      const text = `
+        ${c.id}
+        ${c.name}
+        ${c.rarity}
+        ${c.standard ? "standard" : ""}
+        ${c.collab ? "collab" : ""}
+      `.toLowerCase();
+
+      return text.includes(SEARCH_QUERY);
     }
 
     function render(){
@@ -81,23 +108,34 @@
       CHARACTERS.forEach(c=>{
         const d = data[c.id];
         const owned = d.owned;
+
         if(!passesTab(c, d)) return;
+        if(!passesSearch(c)) return;
 
         const hasWeapons = Array.isArray(c.weapons) && c.weapons.length >= 1;
 
         const card = document.createElement("div");
-        card.className = `tracker-card ${owned ? "is-owned" : "not-owned"} rarity-${c.rarity.replace("★", "star")}`;
+        card.className = `
+          tracker-card
+          ${owned ? "is-owned" : "not-owned"}
+          rarity-${c.rarity.replace("★", "star")}
+          ${c.collab ? "is-collab" : ""}
+        `;
 
         card.innerHTML = `
           <div class="row-main">
             <div class="row-char">
               <img src="${c.image}" class="char-img ${owned ? "" : "dim"}" alt="${c.name}" onerror="this.style.display='none'">
+
               <div class="char-text">
                 <div class="meta meta-top">
                   <span class="pill">${c.rarity}</span>
                   ${c.standard ? `<span class="pill pill-standard">Standard</span>` : ``}
+                  ${c.collab ? `<span class="pill pill-collab">Collab</span>` : ``}
                 </div>
+
                 <div class="char-name">${c.name}</div>
+
                 <label class="owned-inline owned-under-name">
                   <input type="checkbox" ${owned ? "checked" : ""} onchange="setOwned('${c.id}', this.checked)">
                   <span>Owned</span>
@@ -109,6 +147,7 @@
               <div class="mini-box weapon-box ${hasWeapons ? "" : "empty"}">
                 ${hasWeapons ? `
                   <img src="${c.weapons[0]}" class="weapon-icon base" title="Weapon type" onerror="this.style.display='none'">
+
                   ${c.weapons[1] ? `
                     <img
                       src="${c.weapons[1]}"
@@ -131,7 +170,6 @@
                   alt="Resonance ${i+1}">
               `).join("")}
             </div>
-
           </div>
 
           <div class="divider"></div>
@@ -190,9 +228,16 @@
     document.getElementById("tabs").addEventListener("click", (e)=>{
       const btn = e.target.closest(".tab-btn");
       if(!btn) return;
+
       document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));
       btn.classList.add("active");
+
       ACTIVE_TAB = btn.dataset.tab;
+      render();
+    });
+
+    document.getElementById("searchInput").addEventListener("input", (e)=>{
+      SEARCH_QUERY = e.target.value.trim().toLowerCase();
       render();
     });
 
