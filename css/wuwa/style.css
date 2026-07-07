@@ -640,30 +640,7 @@ body{
   .weapon-box{ padding:10px 10px; gap:10px; }
   .row-main{ gap:10px; }
 }
-
-/* Search */
-.search-input{
-  width:100%;
-  max-width:420px;
-  margin:0 0 14px 0;
-  padding:12px 14px;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,.12);
-  background:rgba(18,26,51,.75);
-  color:#fff;
-  font-weight:800;
-  outline:none;
-}
-
-.search-input::placeholder{
-  color:rgba(255,255,255,.45);
-}
-
-.search-input:focus{
-  border-color:rgba(122,162,255,.65);
-  box-shadow:0 0 0 4px rgba(122,162,255,.14);
-}
-
+ß
 /* Collab tag */
 .pill-collab{
   background:rgba(255,105,180,.12);
@@ -685,4 +662,71 @@ body{
   font-weight:900;
   letter-spacing:.08em;
   color:rgba(255,155,209,.75);
+}
+
+/* ==========================
+   Alphabet Bar
+========================== */
+
+.alphabet-bar{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+
+    margin-bottom:18px;
+    padding:14px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:0 18px 50px rgba(0,0,0,.35);
+}
+
+.letter-btn{
+
+    width:42px;
+    height:42px;
+
+    border-radius:12px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    background:#16203d;
+
+    color:white;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+    transition:.18s;
+}
+
+.letter-btn:hover{
+
+    transform:translateY(-2px);
+
+    border-color:#7aa2ff;
+
+    box-shadow:0 0 18px rgba(122,162,255,.28);
+
+}
+
+.letter-btn.active{
+
+    background:#355cc7;
+
+    border-color:#8fb5ff;
+
+    box-shadow:
+        0 0 20px rgba(122,162,255,.45);
+
+}
+
+.letter-btn[data-letter="all"]{
+
+    width:70px;
+
 }
