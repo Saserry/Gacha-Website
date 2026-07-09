@@ -10,8 +10,7 @@ function char(id, name, rarity, weaponType, standard = false, extraWeapon = fals
     name,
     rarity,
     standard,
-    collab,
-    letter: name.charAt(0).toUpperCase(),
+    collab, 
     image: `${BASE}/icons/${id}.png`,
     icons: resonance(id),
     weapons: extraWeapon
@@ -96,6 +95,3 @@ const CHARACTERS = [
   char("zani", "Zani", "5★", "gauntlet", false, true),
   char("zhezhi", "Zhezhi", "5★", "rectifier", false, true),
 ];
-
-/* Sorteert automatisch alfabetisch */
-CHARACTERS.sort((a,b)=> a.name.localeCompare(b.name));
