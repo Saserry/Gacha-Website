@@ -37,16 +37,13 @@ function weaponTypeCandidates(weaponType) {
   const type = weaponType.toLowerCase();
 
   const extensions = [
-    "png",
-    "jpg",
-    "jpeg",
-    "webp"
+    "png"
   ];
 
   const folders = [
-    ["weapon", "icons"],
-    ["weapon", "icon"],
-    ["weapons", "icons"]
+    ["Weapon", "icons"],
+    ["Weapon", "icon"],
+    ["Weapons", "icons"]
   ];
 
   const paths = [];
@@ -77,10 +74,7 @@ function signatureWeaponCandidates(
   signatureWeapon
 ) {
   const extensions = [
-    "png",
-    "jpg",
-    "jpeg",
-    "webp"
+    "png"
   ];
 
   const folders = [
