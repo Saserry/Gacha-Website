@@ -903,12 +903,18 @@ body{
     0 0 22px rgba(142,175,255,.20);
 }
 
-.weapon-icon.disabled,
+.weapon-icon.disabled{
+  background:#0b1324;
+  border-color:#15213a;
+  opacity:.58 !important;
+  filter:grayscale(.55) brightness(.88);
+}
+
 .chain-icon.disabled{
-  background:#080d18;
-  border-color:#0a1120;
-  opacity:.16 !important;
-  filter:grayscale(1) brightness(.58);
+  background:#0b1324;
+  border-color:#15213a;
+  opacity:.48 !important;
+  filter:grayscale(.55) brightness(.86);
 }
 
 .divider{
@@ -943,4 +949,11 @@ body{
 
 .tracker-card.is-collab::after{
   color:rgba(255,173,216,.76);
+}
+
+
+/* Zorgt dat afbeeldingen binnen de icon-vakken zichtbaar blijven */
+.weapon-icon,
+.chain-icon{
+  display:block;
 }
