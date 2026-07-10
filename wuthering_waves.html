@@ -33,11 +33,24 @@
     <div id="list" class="grid" aria-label="Character kaarten"></div>
   </div>
 
-  <script src="js/wuwa/characters.js"></script>
+  <script src="js/wuwa/characters.js?v=3"></script>
 
   <script>
     const KEY = "ww_tracker_final_v2";
     const PLACEHOLDER = "assets/wuwa/resonance/placeholder.jpg";
+
+    const WEAPON_PLACEHOLDER =
+      "data:image/svg+xml;charset=UTF-8," +
+      encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160">
+          <rect width="160" height="160" rx="24" fill="#0b1324"/>
+          <rect x="7" y="7" width="146" height="146" rx="19"
+                fill="none" stroke="#263756" stroke-width="5"/>
+          <text x="80" y="87" text-anchor="middle"
+                font-family="Arial, sans-serif" font-size="22"
+                font-weight="700" fill="#8fa3c8">Weapon</text>
+        </svg>
+      `);
 
     let ACTIVE_TAB = "all";
     let SEARCH_QUERY = "";
@@ -74,6 +87,49 @@
     function iconError(img){
       img.onerror = null;
       img.src = PLACEHOLDER;
+    }
+
+    function normalizeWeaponSources(value){
+      if(Array.isArray(value)){
+        return value.filter(Boolean);
+      }
+
+      return value ? [value] : [];
+    }
+
+    function weaponSourcesAttribute(sources){
+      return encodeURIComponent(
+        JSON.stringify(normalizeWeaponSources(sources))
+      );
+    }
+
+    function weaponError(img){
+      let sources = [];
+
+      try{
+        sources = JSON.parse(
+          decodeURIComponent(img.dataset.sources || "%5B%5D")
+        );
+      }catch(error){
+        console.error("Weapon-paden konden niet worden gelezen:", error);
+      }
+
+      let nextIndex = Number(img.dataset.sourceIndex || 1);
+
+      if(nextIndex < sources.length){
+        img.dataset.sourceIndex = String(nextIndex + 1);
+        img.src = sources[nextIndex];
+        return;
+      }
+
+      console.error(
+        "Geen weapon-afbeelding gevonden. Geprobeerd:",
+        sources
+      );
+
+      img.onerror = null;
+      img.src = WEAPON_PLACEHOLDER;
+      img.classList.add("asset-missing");
     }
 
     function passesTab(c, d){
@@ -113,6 +169,12 @@
         if(!passesSearch(c)) return;
 
         const hasWeapons = Array.isArray(c.weapons) && c.weapons.length >= 1;
+        const baseWeaponSources = hasWeapons
+          ? normalizeWeaponSources(c.weapons[0])
+          : [];
+        const extraWeaponSources = c.weapons[1]
+          ? normalizeWeaponSources(c.weapons[1])
+          : [];
 
         const card = document.createElement("div");
         card.className = `
@@ -145,16 +207,28 @@
 
             <div class="row-col row-weapons">
               <div class="mini-box weapon-box ${hasWeapons ? "" : "empty"}">
-                ${hasWeapons ? `
-                  <img src="${c.weapons[0]}" class="weapon-icon base" title="Weapon type" onerror="this.style.display='none'">
+                ${baseWeaponSources.length ? `
+                  <img
+                    src="${baseWeaponSources[0]}"
+                    data-sources="${weaponSourcesAttribute(baseWeaponSources)}"
+                    data-source-index="1"
+                    class="weapon-icon base"
+                    title="Weapon type"
+                    alt="${c.name} weapon type"
+                    onerror="weaponError(this)"
+                  >
 
-                  ${c.weapons[1] ? `
+                  ${extraWeaponSources.length ? `
                     <img
-                      src="${c.weapons[1]}"
+                      src="${extraWeaponSources[0]}"
+                      data-sources="${weaponSourcesAttribute(extraWeaponSources)}"
+                      data-source-index="1"
                       class="weapon-icon extra ${owned ? "clickable" : "disabled"} ${d.weaponExtra ? "active" : ""}"
-                      title="Extra weapon (toggle)"
+                      title="Eigen weapon (toggle)"
+                      alt="${c.name} eigen weapon"
                       ${owned ? `onclick="toggleWeaponExtra('${c.id}')"` : ``}
-                      onerror="this.style.display='none'">
+                      onerror="weaponError(this)"
+                    >
                   ` : ``}
                 ` : `<span class="weapon-empty">No weapon</span>`}
               </div>
