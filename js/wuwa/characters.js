@@ -88,6 +88,7 @@ const CHARACTERS = [
   char("xiangli-yao", "Xiangli Yao", "5★", "gauntlet", false, true),
 
   char("yangyang", "Yangyang", "4★", "sword"),
+  char("yangyang x", "yangyang: Xuanling ", "5★", "sword", false, true),
   char("yinlin", "Yinlin", "5★", "rectifier", false, true),
   char("youhu", "Youhu", "4★", "gauntlet"),
   char("yuanwu", "Yuanwu", "4★", "gauntlet"),
