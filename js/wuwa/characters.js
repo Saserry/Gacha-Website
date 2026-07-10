@@ -1,26 +1,49 @@
-const BASE = "assets/wuwa";
+const CURRENT_SCRIPT =
+  document.currentScript?.src || window.location.href;
 
-function resonance(id){
-  return [1,2,3,4,5,6].map(n => `${BASE}/resonance/${id}/${n}.png`);
+const BASE = new URL("../../assets/wuwa/", CURRENT_SCRIPT);
+
+const CHARACTER_EXT = "png";
+const RESONANCE_EXT = "png";
+const WEAPON_EXT = "png";
+
+function assetPath(...parts) {
+  return new URL(parts.join("/"), BASE).href;
 }
 
-function char(id, name, rarity, weaponType, standard = false, extraWeapon = false, collab = false){
+function resonance(id) {
+  return [1, 2, 3, 4, 5, 6].map(n =>
+    assetPath("resonance", id, `${n}.${RESONANCE_EXT}`)
+  );
+}
+
+function char(
+  id,
+  name,
+  rarity,
+  weaponType,
+  standard = false,
+  extraWeapon = false,
+  collab = false
+) {
+  const weapons = extraWeapon
+    ? [
+        assetPath("weapon", "icons", `${weaponType}.${WEAPON_EXT}`),
+        assetPath("weapon", `${id}.${WEAPON_EXT}`)
+      ]
+    : [
+        assetPath("weapon", "icons", `${weaponType}.${WEAPON_EXT}`)
+      ];
+
   return {
     id,
     name,
     rarity,
     standard,
-    collab, 
-    image: `${BASE}/icons/${id}.png`,
+    collab,
+    image: assetPath("icons", `${id}.${CHARACTER_EXT}`),
     icons: resonance(id),
-    weapons: extraWeapon
-      ? [
-          `${BASE}/weapon/icons/${weaponType}.png`,
-          `${BASE}/weapon/${id}.png`
-        ]
-      : [
-          `${BASE}/weapon/icons/${weaponType}.png`
-        ]
+    weapons
   };
 }
 
@@ -88,7 +111,7 @@ const CHARACTERS = [
   char("xiangli-yao", "Xiangli Yao", "5★", "gauntlet", false, true),
 
   char("yangyang", "Yangyang", "4★", "sword"),
-  char("yangyang x", "yangyang: Xuanling ", "5★", "sword", false, true),
+  char("yangyang-x", "Yangyang: Xuanling", "5★", "sword", false, true),
   char("yinlin", "Yinlin", "5★", "rectifier", false, true),
   char("youhu", "Youhu", "4★", "gauntlet"),
   char("yuanwu", "Yuanwu", "4★", "gauntlet"),
@@ -96,3 +119,5 @@ const CHARACTERS = [
   char("zani", "Zani", "5★", "gauntlet", false, true),
   char("zhezhi", "Zhezhi", "5★", "rectifier", false, true),
 ];
+
+window.CHARACTERS = CHARACTERS;
