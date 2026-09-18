@@ -76,7 +76,7 @@ function char(
 // CHARACTERS
 // =====================================================
 
-// a.b.c.d.e.f.g.h.i.j.k.l.m.n.o.p.g.r.s.t.u.v.w.x.y.z.
+// a.b.c.d.e.f.g.h.i.j.k.l.m.n.o.p.q.r.s.t.u.v.w.x.y.z.
 
 const CHARACTERS = [
 
@@ -128,6 +128,7 @@ const CHARACTERS = [
   char("phrolova","Phrolova","5★","rectifier",false,true),
 
   char("qiuyuan","Qiuyuan","5★","sword",false,true),
+  char("qingxiao","Qingxiao","5★","sword",false,true),
 
   char("rebecca","Rebecca","5★","pistol",false,true,true),
   char("roccia","Roccia","5★","gauntlet",false,true),
