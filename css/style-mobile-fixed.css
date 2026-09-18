@@ -1,8 +1,8 @@
 /* =========================================================
-   COMPACTE MOBILE TRACKER
+   MOBILE COMPACT CARD LAYOUT
    ========================================================= */
 
-@media (max-width: 768px){
+@media (max-width:768px){
 
   .container{
     width:100%;
@@ -15,159 +15,181 @@
     border-radius:18px;
   }
 
-  /* Alles onder elkaar */
+
+  /* =========================
+     HOOFD LAYOUT
+     ========================= */
+
   .row-main{
-    display:flex;
-    flex-direction:column;
+    display:grid;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      auto;
+
+    gap:12px;
+
     width:100%;
-    gap:14px;
+    align-items:center;
   }
 
 
-  /* =====================================================
-     CHARACTER
-     ===================================================== */
+  /* =========================
+     CHARACTER LINKS
+     ========================= */
 
   .row-char{
-    width:100%;
     display:flex;
     align-items:center;
-    gap:14px;
+
+    gap:12px;
+
+    min-width:0;
   }
 
   .char-img{
-    width:88px;
-    height:88px;
-    flex:0 0 88px;
-    border-radius:16px;
+    width:78px;
+    height:78px;
+
+    flex:0 0 78px;
+
+    border-radius:15px;
   }
 
   .char-text{
-    flex:1;
     min-width:0;
   }
 
   .char-name{
-    font-size:20px;
+    font-size:18px;
+
     white-space:normal;
+    overflow:visible;
   }
 
   .owned-inline{
+    margin-top:7px;
+
+    padding:7px 9px;
+
     width:max-content;
-    margin-top:8px;
   }
 
 
-  /* =====================================================
-     WEAPONS
-     ===================================================== */
+  /* =========================
+     WEAPONS RECHTS
+     ========================= */
 
   .row-weapons{
-    width:100%;
+    width:auto;
+
     display:flex;
-    justify-content:flex-start;
+    justify-content:flex-end;
   }
 
   .weapon-box{
     width:auto;
-    min-width:140px;
+
+    min-width:0;
     min-height:0;
 
-    padding:10px 12px;
+    padding:8px;
 
-    display:flex;
-    justify-content:flex-start;
-    align-items:center;
+    gap:7px;
 
-    gap:10px;
-
-    border-radius:16px;
+    border-radius:14px;
   }
 
   .weapon-icon{
-    width:58px;
-    height:58px;
-    flex:0 0 58px;
+    width:48px;
+    height:48px;
+
+    flex:0 0 48px;
+
+    border-radius:12px;
+  }
+
+
+  /* =========================
+     RESONANCE HELE RIJ
+     ========================= */
+
+  .row-resonance{
+    grid-column:1 / -1;
+
+    width:100%;
+
+    display:flex;
+
+    gap:9px;
+
+    overflow-x:auto;
+    overflow-y:hidden;
+
+    padding:4px 2px 8px;
+
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+
+  .row-resonance::-webkit-scrollbar{
+    display:none;
+  }
+
+  .chain-icon{
+    width:62px;
+    height:62px;
+
+    flex:0 0 62px;
+
     border-radius:14px;
   }
 
 
-  /* =====================================================
-     RESONANCE
-     3 boven + 3 onder
-     ===================================================== */
-
-  .row-resonance{
-    width:100%;
-
-    display:grid;
-
-    grid-template-columns:
-      repeat(3, 1fr);
-
-    gap:10px;
-  }
-
-  .chain-icon{
-    width:100%;
-    max-width:82px;
-    height:auto;
-
-    aspect-ratio:1 / 1;
-
-    justify-self:center;
-
-    border-radius:16px;
-  }
-
-
-  /* =====================================================
+  /* =========================
      SKILLS
-     2 per rij
-     ===================================================== */
+     ========================= */
 
   .skills{
-    width:100%;
-
     display:grid;
 
     grid-template-columns:
-      repeat(2, minmax(0, 1fr));
+      repeat(2, minmax(0,1fr));
 
     gap:8px;
+
+    width:100%;
   }
 
   .skill-row{
     width:100%;
     min-width:0;
 
-    padding:10px 12px;
+    padding:10px 11px;
 
-    border-radius:14px;
+    border-radius:13px;
   }
 
   .skill-name{
-    font-size:13px;
+    font-size:12px;
   }
 
   .skill-input{
-    width:48px;
-    min-width:48px;
+    width:46px;
+    min-width:46px;
 
-    padding:7px;
+    padding:6px;
 
-    font-size:16px;
+    font-size:15px;
   }
 
 
-  /* 5e skill, bijvoorbeeld Outro,
-     mooi in het midden over de hele breedte */
+  /* Laatste skill links onder */
   .skill-row:last-child{
-    grid-column:1 / -1;
+    grid-column:auto;
   }
 
 
-  /* Divider iets kleiner */
   .divider{
     margin:12px 0;
   }
@@ -176,41 +198,43 @@
 
 
 /* =========================================================
-   EXTRA KLEINE TELEFOONS
+   ZEER SMALLE TELEFOON
    ========================================================= */
 
-@media (max-width: 380px){
-
-  .container{
-    padding:8px;
-  }
+@media (max-width:390px){
 
   .tracker-card{
     padding:11px;
   }
 
-  .char-img{
-    width:76px;
-    height:76px;
-    flex-basis:76px;
+  .row-main{
+    grid-template-columns:
+      1fr;
   }
 
-  .char-name{
-    font-size:18px;
+  .row-weapons{
+    justify-content:flex-start;
+  }
+
+  .char-img{
+    width:72px;
+    height:72px;
+
+    flex-basis:72px;
   }
 
   .weapon-icon{
-    width:52px;
-    height:52px;
-    flex-basis:52px;
+    width:46px;
+    height:46px;
+
+    flex-basis:46px;
   }
 
   .chain-icon{
-    max-width:70px;
-  }
+    width:58px;
+    height:58px;
 
-  .skill-name{
-    font-size:12px;
+    flex-basis:58px;
   }
 
 }
