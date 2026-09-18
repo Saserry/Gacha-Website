@@ -957,3 +957,80 @@ body{
 .chain-icon{
   display:block;
 }
+/* =========================================================
+   FINAL WEAPON OWNED STATE OVERRIDES
+   Als een character niet Owned is, worden ALLE weapon-icons
+   donkerder gemaakt: zowel het weapon type als signature weapon.
+   Deze regels staan bewust helemaal onderaan zodat ze eerdere
+   .weapon-icon.base / .weapon-icon.extra regels overschrijven.
+   ========================================================= */
+
+/* Alle weapons donker bij Not Owned */
+.tracker-card.not-owned .weapon-icon{
+  opacity:.30 !important;
+  filter:grayscale(.85) brightness(.56) !important;
+  background:#070c17 !important;
+  border-color:#101a2f !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.05),
+    0 6px 16px rgba(0,0,0,.45) !important;
+}
+
+/* Normale weapon-type icon ook donker */
+.tracker-card.not-owned .weapon-icon.base{
+  opacity:.30 !important;
+  filter:grayscale(.85) brightness(.56) !important;
+  background:#070c17 !important;
+  border-color:#101a2f !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.05),
+    0 6px 16px rgba(0,0,0,.45) !important;
+}
+
+/* Signature weapon iets donkerder dan de base icon */
+.tracker-card.not-owned .weapon-icon.extra{
+  opacity:.22 !important;
+  filter:grayscale(1) brightness(.50) !important;
+  background:#060a13 !important;
+  border-color:#0d1628 !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.04),
+    0 6px 16px rgba(0,0,0,.48) !important;
+}
+
+/* Geen hover/glow zolang character niet Owned is */
+.tracker-card.not-owned .weapon-icon:hover,
+.tracker-card.not-owned .weapon-icon.clickable:hover{
+  transform:none !important;
+  opacity:.30 !important;
+  filter:grayscale(.85) brightness(.56) !important;
+  border-color:#101a2f !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.05),
+    0 6px 16px rgba(0,0,0,.45) !important;
+}
+
+/* Signature weapon behoudt zijn donkerdere toestand bij hover */
+.tracker-card.not-owned .weapon-icon.extra:hover{
+  opacity:.22 !important;
+  filter:grayscale(1) brightness(.50) !important;
+  border-color:#0d1628 !important;
+}
+
+/* Owned: normale weapon weer volledig zichtbaar */
+.tracker-card.is-owned .weapon-icon.base{
+  opacity:1 !important;
+  filter:none !important;
+}
+
+/* Owned: signature weapon standaard gedimd tot je hem activeert */
+.tracker-card.is-owned .weapon-icon.extra{
+  opacity:.54;
+  filter:grayscale(1) brightness(.68);
+}
+
+/* Owned + signature geselecteerd */
+.tracker-card.is-owned .weapon-icon.extra.active{
+  opacity:1 !important;
+  filter:none !important;
+}
